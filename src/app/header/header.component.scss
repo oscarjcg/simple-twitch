@@ -1,0 +1,35 @@
+$main-color: #ce93d8;
+$normal-text-color: white;
+$bg-color: black;
+
+.active-purple :focus {
+    border: 1px solid $main-color;
+    box-shadow: 0 0 0 1px $main-color;
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+    background-color: $bg-color;
+}
+
+p {
+    color: $main-color;
+}
+
+ul {
+    li {
+        a {
+            color: $normal-text-color;
+        }
+    }
+}
+
+ul {
+    li {
+        a:hover {
+            color: $main-color;
+            background-color: transparent;
+        }
+    }
+}
