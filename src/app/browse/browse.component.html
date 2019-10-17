@@ -1,1 +1,17 @@
-<p>browse works!</p>
+
+<div class="main-container">
+
+    <div class="container">
+        <h1 class="title">Browse</h1>    
+        <a href="#" class="feature-title" (click)="onSelect('categoryList')">Categories</a>
+        <a href="#" class="feature-title" (click)="onSelect('channelList')">Live Channels</a>
+             
+        <div class="container-search-bar active-purple">
+            <p class="title" >Filter by </p>
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+
+        <app-category-list *ngIf="loadedFeature === 'categoryList'"></app-category-list>
+        <app-channel-list *ngIf="loadedFeature === 'channelList'"></app-channel-list> 
+    </div>
+</div>

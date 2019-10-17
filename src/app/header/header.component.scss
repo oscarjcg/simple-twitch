@@ -1,11 +1,6 @@
-$main-color: #ce93d8;
-$normal-text-color: white;
-$bg-color: black;
+@import 'src/styles';
 
-.active-purple :focus {
-    border: 1px solid $main-color;
-    box-shadow: 0 0 0 1px $main-color;
-}
+$bg-color: rgb(34, 34, 34); 
 
 .main-container {
     display: flex;
@@ -21,6 +16,7 @@ ul {
     li {
         a {
             color: $normal-text-color;
+            background-color: transparent;
         }
     }
 }
@@ -29,6 +25,14 @@ ul {
     li {
         a:hover {
             color: $main-color;
+            background-color: transparent;
+        }
+    }
+}
+
+ul {
+    li {
+        a:visited {         
             background-color: transparent;
         }
     }

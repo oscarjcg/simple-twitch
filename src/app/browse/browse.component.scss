@@ -1,0 +1,34 @@
+@import 'src/styles';
+
+$bg-color: black; 
+
+.main-container {
+    background-color: $bg-color;  
+}
+
+.feature-container {
+    display: flex;
+}
+
+.title {
+    color: $normal-text-color;
+    padding-right: 20px;
+}
+
+.feature-title {
+    @extend .link;
+    padding-right: 20px;
+    font-size: 20px;    
+}
+
+.feature-title:hover {
+    @extend .link-hover;
+}
+
+.container-search-bar {
+    display: flex; 
+    padding-top: 20px;   
+    input {
+        width: 200px;
+    }
+}

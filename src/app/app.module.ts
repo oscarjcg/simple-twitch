@@ -6,6 +6,12 @@ import { HeaderComponent } from './header/header.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { BrowseComponent } from './browse/browse.component';
 import { FooterComponent } from './footer/footer.component';
+import { CategoryListComponent } from './browse/category-list/category-list.component';
+import { CategoryItemComponent } from './browse/category-list/category-item/category-item.component';
+import { CategoryService } from './shared/category.service';
+import { ChannelListComponent } from './browse/channel-list/channel-list.component';
+import { ChannelItemComponent } from './browse/channel-list/channel-item/channel-item.component';
+import { ChannelService } from './shared/service/channel.service';
 
 @NgModule({
   declarations: [
@@ -13,12 +19,16 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     DiscoverComponent,
     BrowseComponent,
-    FooterComponent
+    FooterComponent,
+    CategoryListComponent,
+    CategoryItemComponent,
+    ChannelListComponent,
+    ChannelItemComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [CategoryService, ChannelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

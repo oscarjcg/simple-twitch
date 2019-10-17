@@ -1,0 +1,13 @@
+@import "src/styles";
+
+.main-container {
+    width: 200px;
+}
+
+.name {
+    @extend .link;    
+}
+
+.name {
+    @extend .link-hover;
+}

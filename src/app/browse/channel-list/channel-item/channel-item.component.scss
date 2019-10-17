@@ -1,0 +1,10 @@
+@import 'src/styles';
+
+.main-container {
+    width: 320px;
+}
+
+.channel-name {
+    @extend .link;
+    @extend .link-hover;
+}

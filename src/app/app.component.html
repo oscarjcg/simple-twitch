@@ -1,1 +1,3 @@
-<app-header></app-header>
+<app-header (featureSelected)="onNavigate($event)"></app-header>
+<app-browse *ngIf="loadedFeature === 'browse'"></app-browse>
+<app-discover *ngIf="loadedFeature === 'discover'"></app-discover>

@@ -5,16 +5,16 @@
     <p class="navbar-brand"><strong>Simple Twitch</strong> </p>
     <!-- Features -->
     <ul class="nav navbar-nav">        
-        <li class="active">
-            <a href="#">Browse</a>
+        <li>
+          <a href="#" (click)="onSelect('discover')">Discover</a>            
         </li>
         <li>
-            <a href="#">Discover</a>
+            <a href="#" (click)="onSelect('browse')">Browse</a>
         </li> 
     </ul>
   </div>
 
-  <!-- Search bar -->
+  <!-- Search bar --> 
   <div class="form-group active-purple">
       <input class="form-control" type="text" placeholder="Search">
   </div>

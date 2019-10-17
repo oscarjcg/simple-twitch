@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+$main-color: #ce93d8;
+$normal-text-color: white;
+
+.active-purple:focus {
+    border: 1px solid $main-color;
+    box-shadow: 0 0 0 1px $main-color;
+}
+
+.link {
+    color: $normal-text-color;
+    text-decoration: none;
+}
+
+.link-hover:hover {
+    color: $main-color;
+}
