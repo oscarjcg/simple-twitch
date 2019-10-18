@@ -8,10 +8,11 @@ import { BrowseComponent } from './browse/browse.component';
 import { FooterComponent } from './footer/footer.component';
 import { CategoryListComponent } from './browse/category-list/category-list.component';
 import { CategoryItemComponent } from './browse/category-list/category-item/category-item.component';
-import { CategoryService } from './shared/category.service';
+import { CategoryService } from './shared/service/category.service';
 import { ChannelListComponent } from './browse/channel-list/channel-list.component';
 import { ChannelItemComponent } from './browse/channel-list/channel-item/channel-item.component';
 import { ChannelService } from './shared/service/channel.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ChannelService } from './shared/service/channel.service';
     ChannelItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [CategoryService, ChannelService],
   bootstrap: [AppComponent]

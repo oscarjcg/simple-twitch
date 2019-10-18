@@ -1,4 +1,5 @@
-import { Category } from './category.model';
+import { Category } from '../model/category.model';
+
 
 export class CategoryService {
     private categories: Category[] = [
