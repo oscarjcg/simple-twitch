@@ -13,6 +13,10 @@ import { ChannelListComponent } from './browse/channel-list/channel-list.compone
 import { ChannelItemComponent } from './browse/channel-list/channel-item/channel-item.component';
 import { ChannelService } from './shared/service/channel.service';
 import { AppRoutingModule } from './app-routing.module';
+import { ChannelComponent } from './channel/channel.component';
+import { HeaderChannelComponent } from './channel/header-channel/header-channel.component';
+import { ChatComponent } from './channel/chat/chat.component';
+import { NgxYoutubePlayerModule } from 'node_modules/ngx-youtube-player';
 
 @NgModule({
   declarations: [
@@ -24,11 +28,15 @@ import { AppRoutingModule } from './app-routing.module';
     CategoryListComponent,
     CategoryItemComponent,
     ChannelListComponent,
-    ChannelItemComponent
+    ChannelItemComponent,
+    ChannelComponent,
+    HeaderChannelComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxYoutubePlayerModule.forRoot()
   ],
   providers: [CategoryService, ChannelService],
   bootstrap: [AppComponent]

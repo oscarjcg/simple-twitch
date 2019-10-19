@@ -1,0 +1,44 @@
+@import 'src/styles';
+
+$bg-color: rgb(34, 34, 34); 
+$border-color: 1px solid black;
+
+.main-container {
+    display: flex;
+    align-items: center;
+    background-color: $bg-color;
+    border: $border-color;
+}
+
+.channel-name {
+    @extend .link;
+    @extend .link-hover;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+ul {
+    li {
+        a {
+            color: $normal-text-color;
+            background-color: transparent;
+        }
+    }
+}
+
+ul {
+    li {
+        a:hover {
+            color: $main-color;
+            background-color: transparent;
+        }
+    }
+}
+
+ul {
+    li {
+        a:visited {         
+            background-color: transparent;
+        }
+    }
+}
