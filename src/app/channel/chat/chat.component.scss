@@ -1,0 +1,47 @@
+
+@import 'src/styles';
+
+$bg-color: rgb(34, 34, 34); 
+$border-color: 1px solid black;
+
+.mainContainer {
+    background-color: black;    
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $bg-color;
+    border: $border-color;
+    height: 50px;   
+}
+
+.title {
+    color: white;
+}
+
+.contentContainer {
+    height: 400px;
+    overflow: auto;
+    border: 1px solid gray;
+}
+
+.commentContainer {
+    display: flex;       
+    p {
+        color: white;
+        padding-left: 7px;
+    }
+}
+
+.inputCommentContainer {
+    text-align: center;
+    input {
+        @extend .active-purple; 
+        display:inline-block;        
+        height: 40px;
+        border-radius: 5px;
+        width: 80%;
+    }   
+}

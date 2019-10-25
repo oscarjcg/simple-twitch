@@ -1,1 +1,26 @@
-<p>chat works!</p>
+
+<div class="mainContainer">
+    <!-- Header -->
+    <div class="header">
+        <p class="title">STREAM CHAT</p>
+    </div>
+
+    <!-- Comments -->
+    <div class="contentContainer">
+        <div class="commentContainer" *ngFor="let comment of comments">
+            <p>{{ comment.getTime() }}</p>
+            <p [ngStyle]="{color: comment.getColor()}">{{ comment.username}}:</p>
+            <p>{{ comment.comment}}</p>
+        </div>
+    </div>
+
+    <!-- Enter comment -->
+    <p style="color: white;">Time: {{ timeSec }}</p>
+    <div class="inputCommentContainer">
+        <div class="form-group active-purple">
+            <input class="form-control" type="text" placeholder="Send a message">
+        </div>
+        
+    </div>
+
+</div>  

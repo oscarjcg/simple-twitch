@@ -1,11 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-$main-color: #ce93d8;
+$main-color: #c466d4;
 $normal-text-color: white;
 
-.active-purple:focus {
-    border: 1px solid $main-color;
-    box-shadow: 0 0 0 1px $main-color;
+.active-purple {       
+    input {
+        background-color: rgb(85, 85, 85);
+        color: white;
+        border-color: transparent;
+    }
 }
+
+.active-purple:focus {
+    border: 2px solid $main-color;
+    box-shadow: 0 0 0 1px $main-color;
+    background-color: black;
+}
+
+::placeholder { 
+    color: rgb(196, 196, 196);    
+  } 
 
 .link {
     color: $normal-text-color;
@@ -15,3 +28,8 @@ $normal-text-color: white;
 .link-hover:hover {
     color: $main-color;
 }
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+ }

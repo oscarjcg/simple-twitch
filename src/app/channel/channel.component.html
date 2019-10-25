@@ -1,21 +1,22 @@
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8">
+<div class="container-fluid "> 
+    <div class="row mainContainer">
+        <div class="col-sm-8 nopadding" (window:resize)="onResize()" #videoContainer>
             <!-- Header -->
-            <app-header-channel></app-header-channel>
+            <app-header-channel [channel] = channel></app-header-channel>
             <!-- Video -->
             <!-- <iframe #iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(videoUrl)" width="420" height="345"></iframe> -->
             <youtube-player
                 [videoId]="id"
                 (ready)="savePlayer($event)"
                 (change)="onStateChange($event)"
-            ></youtube-player>
-            <p>{{ currentTime }}</p>
+                [width]="width"></youtube-player>
+            <p>_Title</p>
+            <p>Time: {{ currentTime }}</p>
         </div>
  
-        <div class="col-sm-4">
+        <div class="col-sm-4 nopadding">
             <!-- Chat    -->
             <app-chat></app-chat>
         </div>

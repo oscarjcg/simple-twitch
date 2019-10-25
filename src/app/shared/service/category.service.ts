@@ -1,6 +1,7 @@
 import { Category } from '../model/category.model';
+import { Injectable } from '@angular/core';
 
-
+@Injectable({providedIn: 'root'})
 export class CategoryService {
     private categories: Category[] = [
         new Category('League of Legends', 'lol.jpg'),

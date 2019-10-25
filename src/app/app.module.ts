@@ -38,7 +38,7 @@ import { NgxYoutubePlayerModule } from 'node_modules/ngx-youtube-player';
     AppRoutingModule,
     NgxYoutubePlayerModule.forRoot()
   ],
-  providers: [CategoryService, ChannelService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
