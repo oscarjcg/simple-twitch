@@ -1,8 +1,9 @@
 
 
 .mainContainer{
-    // flex-grow: 0;
-    // flex-shrink: 1;
-    // flex-basis: auto;
-    background: yellow;
+    background: yellow; 
+}
+
+.page {
+    overflow: auto; 
 }

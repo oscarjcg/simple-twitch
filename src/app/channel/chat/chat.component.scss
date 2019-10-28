@@ -6,6 +6,8 @@ $border-color: 1px solid black;
 
 .mainContainer {
     background-color: black;    
+    display: flex;
+    flex-flow: column;
 }
 
 .header {
@@ -13,18 +15,20 @@ $border-color: 1px solid black;
     justify-content: center;
     align-items: center;
     background-color: $bg-color;
-    border: $border-color;
-    height: 50px;   
+    border: $border-color; 
+    flex: 0 1 auto;
 }
 
 .title {
+    padding: 15px;
     color: white;
+    margin-bottom: 0px;
 }
 
-.contentContainer {
-    height: 400px;
+.contentContainer {   
     overflow: auto;
     border: 1px solid gray;
+    flex: 1 1 auto;
 }
 
 .commentContainer {
@@ -36,7 +40,9 @@ $border-color: 1px solid black;
 }
 
 .inputCommentContainer {
-    text-align: center;
+    text-align: center; 
+    flex: 0 1 auto;
+    background-color: black;    
     input {
         @extend .active-purple; 
         display:inline-block;        

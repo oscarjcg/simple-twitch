@@ -1,5 +1,5 @@
 
-<div class="mainContainer">
+<div class="mainContainer" (window:resize)="onResize()" [ngStyle]="{height: heightChat}">
     <!-- Header -->
     <div class="header">
         <p class="title">STREAM CHAT</p>
@@ -14,9 +14,9 @@
         </div>
     </div>
 
-    <!-- Enter comment -->
-    <p style="color: white;">Time: {{ timeSec }}</p>
+    <!-- Enter comment -->    
     <div class="inputCommentContainer">
+        <p style="color: white;">Time: {{ timeSec }}</p>
         <div class="form-group active-purple">
             <input class="form-control" type="text" placeholder="Send a message">
         </div>

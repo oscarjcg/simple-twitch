@@ -3,6 +3,7 @@ import { CommentChat } from 'src/app/shared/model/comment.model';
 import { ChatService } from 'src/app/shared/service/chat.service';
 import { ChannelService } from 'src/app/shared/service/channel.service';
 import { Subscription } from 'rxjs';
+import { DataComponentService } from 'src/app/shared/service/data-component.service';
 
 @Component({
   selector: 'app-chat',
@@ -14,9 +15,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   timeSec = 0;
   currentTimeSubs: Subscription;
   allComments: CommentChat[] = [];
+  heightChat = '700px';
 
   constructor(private chatService: ChatService,
-              private channelService: ChannelService) { }
+              private channelService: ChannelService,
+              private dataComponentService: DataComponentService) { }
 
   ngOnInit() {
     this.allComments = this.chatService.getComments();
@@ -26,6 +29,8 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.timeSec = newTime;
       this.loadCommentsUntil(this.timeSec);
     });
+
+    this.heightChat = this.dataComponentService.calculateHeightChat() + 'px';
   }
 
   ngOnDestroy() {
@@ -36,6 +41,10 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.comments = this.allComments.filter(value => {
       return value.timeSeconds <= seconds;
     });
+  }
+
+  onResize() {
+    this.heightChat = this.dataComponentService.calculateHeightChat() + 'px';
   }
 
 }
