@@ -4,11 +4,7 @@ import { Injectable } from '@angular/core';
 export class DataComponentService {
     heightHeader = 0;
 
-    calculateHeightChannel() {
-        return window.innerHeight - this.heightHeader;
-    }
-
-    calculateHeightChat() {
+    calculateHeightNoHeader() {
         return window.innerHeight - this.heightHeader;
     }
 }

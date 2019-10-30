@@ -1,0 +1,24 @@
+
+
+<h4 class="title">Recommended <a href="#" class="link-category">{{ category}}</a> </h4>
+
+<div class=" main-container" (window:resize)="onResize()" #container>       
+    <app-category-item 
+    *ngFor="let cat of categories"
+    [category]=cat ></app-category-item>   
+    <app-channel-item 
+    *ngFor="let channel of channels"
+    [channel]=channel ></app-channel-item>   
+     
+</div>
+
+<div class="more-container">  
+    
+    <hr style="flex-grow: 1">          
+    <p
+    class="more"         
+    (click)="onMore()"
+    *ngIf="more">
+    Show more <span class="glyphicon glyphicon-menu-down"></span></p>  
+    <hr style="flex-grow: 1; align-self: center;">          
+</div>   

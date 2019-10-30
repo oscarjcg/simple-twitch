@@ -1,18 +1,16 @@
 
-<div class="main-container">
 
-    <div class="container">
-        <h1 class="title">Browse</h1>  
-        <!-- Sections  -->
-        <a class="feature-title" routerLinkActive="active" routerLink="/directory">Categories</a>
-        <a class="feature-title" routerLink="/directory/all">Live Channels</a>
-        <!-- Search -->
-        <div class="container-search-bar active-purple">
-            <p class="title" >Filter by </p>
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-
-        <!-- Content -->
-        <router-outlet></router-outlet>
+<div class="container-fluid main-container" [ngStyle]="{height: height}">
+    <h1 class="title">Browse</h1>  
+    <!-- Sections  -->
+    <a class="feature-title" routerLinkActive="active" routerLink="/directory">Categories</a>
+    <a class="feature-title" routerLink="/directory/all">Live Channels</a>
+    <!-- Search -->
+    <div class="container-search-bar active-purple">
+        <p class="title" >Filter by </p>
+        <input type="text" class="form-control" placeholder="Search">
     </div>
+
+    <!-- Content -->
+    <router-outlet></router-outlet>
 </div>

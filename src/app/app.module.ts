@@ -17,6 +17,9 @@ import { ChannelComponent } from './channel/channel.component';
 import { HeaderChannelComponent } from './channel/header-channel/header-channel.component';
 import { ChatComponent } from './channel/chat/chat.component';
 import { NgxYoutubePlayerModule } from 'node_modules/ngx-youtube-player';
+import { SimpleChannelListComponent } from './simple-channel-list/simple-channel-list.component';
+import { SimpleChannelItemComponent } from './simple-channel-list/simple-channel-item/simple-channel-item.component';
+import { RecommendedListComponent } from './discover/recommended-list/recommended-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { NgxYoutubePlayerModule } from 'node_modules/ngx-youtube-player';
     ChannelItemComponent,
     ChannelComponent,
     HeaderChannelComponent,
-    ChatComponent
+    ChatComponent,
+    SimpleChannelListComponent,
+    SimpleChannelItemComponent,
+    RecommendedListComponent
   ],
   imports: [
     BrowserModule,

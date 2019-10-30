@@ -3,7 +3,8 @@
 $bg-color: black; 
 
 .main-container {
-    background-color: $bg-color;  
+    background-color: $bg-color;    
+    overflow: auto;
 }
 
 .feature-container {

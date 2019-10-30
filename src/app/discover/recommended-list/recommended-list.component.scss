@@ -1,0 +1,37 @@
+@import 'src/styles.scss';
+
+.title {
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+.link-category {
+    color: $main-color;
+    
+}
+
+.link-category:hover {
+    color: #c78bd1;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.more-container {
+    display: flex;  
+}
+
+.more {   
+    color: $main-color;
+    cursor: pointer;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.more:hover {
+    background-color: rgba(255, 255, 255, 0.151);
+}

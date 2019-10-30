@@ -1,0 +1,9 @@
+
+<div class="main-container" (window:resize)="onResize()" [ngStyle]="{height: heightList}"> 
+    <p class="title">
+        <b> Popular channels</b>
+    </p>
+    <div *ngFor="let channel of channels">
+        <app-simple-channel-item [channel]=channel></app-simple-channel-item>
+    </div>
+</div>

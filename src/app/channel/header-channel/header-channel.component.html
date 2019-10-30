@@ -1,7 +1,11 @@
 
 <div class="main-container">
     <!-- Image and name -->
-    <img src="assets/img/{{ channel.image }}" alt="_name" height="30">
+    <img 
+        src="assets/img/{{ channel.image }}" 
+        alt="{{ channel.image }}" 
+        height="30"
+        style="border-radius: 50%; color: white; margin-left: 10px; margin-right: 10px;">
     <a class="channel-name">{{ channel.name }}</a>
     <div class="navbar-header">
         <!-- Features -->

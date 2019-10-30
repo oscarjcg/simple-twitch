@@ -30,7 +30,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.loadCommentsUntil(this.timeSec);
     });
 
-    this.heightChat = this.dataComponentService.calculateHeightChat() + 'px';
+    this.heightChat = this.dataComponentService.calculateHeightNoHeader() + 'px';
   }
 
   ngOnDestroy() {
@@ -44,7 +44,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   onResize() {
-    this.heightChat = this.dataComponentService.calculateHeightChat() + 'px';
+    this.heightChat = this.dataComponentService.calculateHeightNoHeader() + 'px';
   }
 
 }

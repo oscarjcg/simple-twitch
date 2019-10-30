@@ -1,0 +1,15 @@
+
+<div class="container-fluid main-container" routerLink="/{{channel.name}}">
+    <div class="row">
+        <div class="col-sm-4">
+            <img 
+                src="assets/img/{{ channel.image }}" 
+                alt="{{ channel.image }}" 
+                height="30" 
+                style="border-radius: 50%; color: white">
+        </div>
+        <div class="col-sm-8">
+            <p class="channel-name">{{ channel.name }}</p>
+        </div>        
+    </div>    
+</div>

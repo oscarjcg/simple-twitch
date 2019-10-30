@@ -1,2 +1,9 @@
-<p style="color: rgb(255, 0, 0)">discover works!</p>
-
+<div class="container-fluid main-container" [ngStyle]="{height: height}">
+    <div class="row">
+        <div class="col-xs-12">
+            <app-recommended-list 
+                *ngFor="let recommendation of recommendations"
+                [category]="recommendation"></app-recommended-list> 
+        </div>
+    </div>    
+</div>

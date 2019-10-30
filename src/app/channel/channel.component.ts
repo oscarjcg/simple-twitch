@@ -2,7 +2,7 @@
  import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
  import { ChannelService } from '../shared/service/channel.service';
  import { Channel } from '../shared/model/channel.model';
- import { ActivatedRoute } from '@angular/router';
+ import { ActivatedRoute, Params } from '@angular/router';
  import { DataComponentService } from '../shared/service/data-component.service';
 
 
@@ -42,8 +42,12 @@ export class ChannelComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
     this.channel = this.channelService.getChannel(this.route.snapshot.params.channel);
-    this.heightChannel = this.dataComponentService.calculateHeightChannel() + 'px';
+    this.heightChannel = this.dataComponentService.calculateHeightNoHeader() + 'px';
     this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
+    this.route.params
+      .subscribe((params: Params) => {
+        this.channel = this.channelService.getChannel(params.channel);
+      });
   }
 
   ngAfterViewInit() {
@@ -66,7 +70,7 @@ export class ChannelComponent implements OnInit, OnDestroy, AfterViewInit {
       ratio[0],
       ratio[1]);
     player.setSize(this.width, this.height);
-    console.log(this.width + ' h: ' + this.  height);
+    // console.log(this.width + ' h: ' + this.  height);
     // player.setSize(300, 600);
 
     this.startTimer();
@@ -95,7 +99,7 @@ export class ChannelComponent implements OnInit, OnDestroy, AfterViewInit {
   onResize() {
     // console.log('Resize');
     this.playerConfig(this.player, this.RATIO_16_9);
-    this.heightChannel = this.dataComponentService.calculateHeightChannel() + 'px';
+    this.heightChannel = this.dataComponentService.calculateHeightNoHeader() + 'px';
     this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
   }
 
