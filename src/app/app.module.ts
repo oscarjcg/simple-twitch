@@ -20,6 +20,7 @@ import { NgxYoutubePlayerModule } from 'node_modules/ngx-youtube-player';
 import { SimpleChannelListComponent } from './simple-channel-list/simple-channel-list.component';
 import { SimpleChannelItemComponent } from './simple-channel-list/simple-channel-item/simple-channel-item.component';
 import { RecommendedListComponent } from './discover/recommended-list/recommended-list.component';
+import { GameComponent } from './browse/game/game.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { RecommendedListComponent } from './discover/recommended-list/recommende
     ChatComponent,
     SimpleChannelListComponent,
     SimpleChannelItemComponent,
-    RecommendedListComponent
+    RecommendedListComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

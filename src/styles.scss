@@ -35,3 +35,8 @@ $normal-text-color: white;
     padding: 0;
     margin: 0;
  }
+
+ ::selection {
+    color: $normal-text-color;
+    background: $main-color;
+}

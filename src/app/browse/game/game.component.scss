@@ -7,6 +7,12 @@ $bg-color: black;
     overflow: auto;
 }
 
+.header {
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .feature-container {
     display: flex;
 }

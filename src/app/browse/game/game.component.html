@@ -1,0 +1,23 @@
+<div class="container-fluid main-container" [ngStyle]="{height: height}">
+    <div class="header">        
+        <img 
+            src="assets/img/{{ category.image }}" 
+            alt="{{ category.name }}" 
+            width="150"
+            style="margin-right: 20px">
+        <h1 class="title">{{ category.name }}</h1>
+    </div>
+      
+    <!-- Sections  -->    
+    <a class="feature-title" routerLink="/directory/game/{{ game }}">Live Channels</a>
+    <a class="feature-title" routerLink="/directory/game/{{ game }}/videos/all">Videos</a>
+    <a class="feature-title" routerLink="/directory/game/{{ game }}/clips">Clips</a>
+    <!-- Search -->
+    <div class="container-search-bar active-purple">
+        <p class="title" >Filter by </p>
+        <input type="text" class="form-control" placeholder="Search">
+    </div>
+
+    <!-- Content -->
+    <router-outlet></router-outlet>
+</div>
