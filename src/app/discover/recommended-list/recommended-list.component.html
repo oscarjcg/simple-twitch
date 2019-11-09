@@ -3,10 +3,12 @@
 <h4 class="title">Recommended <a href="#" class="link-category">{{ category}}</a> </h4>
 
 <div class=" main-container" (window:resize)="onResize()" #container>       
-    <app-category-item 
+   
+    <app-category-item     
     *ngFor="let cat of categories"
-    [category]=cat ></app-category-item>   
-    <app-channel-item 
+    [category]=cat ></app-category-item>  
+      
+    <app-channel-item   
     *ngFor="let channel of channels"
     [channel]=channel ></app-channel-item>   
      

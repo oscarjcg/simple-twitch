@@ -1,8 +1,8 @@
 
 <div class="main-container">
-    <img src="assets/img/{{ channel.preview }}" alt="Preview" width="300">
+    <img src="{{ channel.previewBase64 }}" alt="Preview" width="300">
     <div>
-        <img src="assets/img/{{ channel.image }}" alt="{{ channel.name }}" height="40px">
+        <img src="{{ channel.imageBase64 }}" alt="{{ channel.name }}" height="40px">
         <a routerLink="/{{ channel.name }}" class="channel-name">{{ channel.name }}</a>
     </div>
 </div>

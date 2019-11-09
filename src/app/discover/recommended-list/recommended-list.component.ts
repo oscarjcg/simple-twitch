@@ -1,15 +1,16 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, OnDestroy } from '@angular/core';
 import { Category } from 'src/app/shared/model/category.model';
 import { CategoryService } from 'src/app/shared/service/category.service';
 import { Channel } from 'src/app/shared/model/channel.model';
 import { ChannelService } from 'src/app/shared/service/channel.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recommended-list',
   templateUrl: './recommended-list.component.html',
   styleUrls: ['./recommended-list.component.scss']
 })
-export class RecommendedListComponent implements OnInit {
+export class RecommendedListComponent implements OnInit, OnDestroy {
   @Input() category = 'categories';
 
   categories: Category[] = [];
@@ -17,13 +18,29 @@ export class RecommendedListComponent implements OnInit {
   WIDTH_CATEGORY_ITEM = 150 + 15;
   WIDTH_CHANNEL_ITEM = 320;
   more = true;
+  subs: Subscription;
+
 
   @ViewChild('container', {static: true}) container: ElementRef;
   constructor(private categoryService: CategoryService,
               private channelService: ChannelService) { }
 
   ngOnInit() {
-    this.loadList();
+    if (this.category === 'categories') {
+      this.subs = this.categoryService.categoriesChanged
+      .subscribe(categories => {
+        this.categories = categories;
+        this.loadList();
+      });
+      this.categoryService.fetchCategories();
+    } else {
+      this.subs = this.channelService.channelChanged
+      .subscribe(channels => {
+        this.channels = channels;
+        this.loadList();
+      });
+      this.channelService.fetchChannels();
+    }
   }
 
   private loadList(rows: number = 1) {
@@ -68,5 +85,9 @@ export class RecommendedListComponent implements OnInit {
     this.loadList(2);
     this.more = false;
     console.log('More...');
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 }
