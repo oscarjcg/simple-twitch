@@ -1,7 +1,9 @@
 <div class="container-fluid main-container" [ngStyle]="{height: height}">
-    <div class="header">        
+
+    <app-spinner *ngIf="isFetching"></app-spinner>
+    <div class="header" *ngIf="!isFetching">        
         <img 
-            src="assets/img/{{ category.image }}" 
+            src="{{ category.imageBase64 }}"
             alt="{{ category.name }}" 
             width="150"
             style="margin-right: 20px">
@@ -9,9 +11,16 @@
     </div>
       
     <!-- Sections  -->    
-    <a class="feature-title" routerLink="/directory/game/{{ game }}">Live Channels</a>
-    <a class="feature-title" routerLink="/directory/game/{{ game }}/videos/all">Videos</a>
-    <a class="feature-title" routerLink="/directory/game/{{ game }}/clips">Clips</a>
+    <a class="feature-title" 
+        routerLink="/directory/game/{{ game }}" 
+        routerLinkActive="active" 
+        [routerLinkActiveOptions]="{exact: true}">Live Channels</a>
+    <a class="feature-title" 
+        routerLink="/directory/game/{{ game }}/videos/all" 
+        routerLinkActive="active">Videos</a>
+    <a class="feature-title" 
+        routerLink="/directory/game/{{ game }}/clips" 
+        routerLinkActive="active">Clips</a>
     <!-- Search -->
     <div class="container-search-bar active-purple">
         <p class="title" >Filter by </p>

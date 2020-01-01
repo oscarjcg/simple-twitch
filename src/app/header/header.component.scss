@@ -12,10 +12,15 @@ p {
     color: $main-color;
 }
 
-ul {
+.list {
+    li:not(.active) {
+        a {
+            color: $normal-text-color;            
+        }
+    }
+    
     li {
         a {
-            color: $normal-text-color;
             background-color: transparent;
         }
         a:hover {
@@ -24,6 +29,13 @@ ul {
         }
         a:visited {         
             background-color: transparent;
-        }
+        } 
     }
+}
+
+.active {
+    a {
+        color: $main-color;
+    }    
+    border-bottom: 3px solid $main-color;
 }

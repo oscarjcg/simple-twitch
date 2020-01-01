@@ -4,6 +4,7 @@
  import { Channel } from '../shared/model/channel.model';
  import { ActivatedRoute, Params } from '@angular/router';
  import { DataComponentService } from '../shared/service/data-component.service';
+ import { Subscription } from 'rxjs';
 
 
  @Component({
@@ -26,6 +27,7 @@ export class ChannelComponent implements OnInit, OnDestroy, AfterViewInit {
   private RATIO_16_9 = [16, 9];
   private RATIO_4_3 = [4, 3];
   channel: Channel;
+  subs: Subscription;
 
   heightChannel = '700px';
   smallScreen = false;
@@ -41,13 +43,19 @@ export class ChannelComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
-    this.channel = this.channelService.getChannel(this.route.snapshot.params.channel);
+    this.subs = this.channelService.channelChanged
+      .subscribe(channels => {
+        this.channel = this.channelService.getChannel(this.route.snapshot.params.channel);
+      });
+
     this.heightChannel = this.dataComponentService.calculateHeightNoHeader() + 'px';
     this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
     this.route.params
       .subscribe((params: Params) => {
-        this.channel = this.channelService.getChannel(params.channel);
+        this.channelService.fetchChannels();
       });
+
+    this.channelService.fetchChannels();
   }
 
   ngAfterViewInit() {
@@ -104,6 +112,6 @@ export class ChannelComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy() {
-
+    this.subs.unsubscribe();
   }
 }

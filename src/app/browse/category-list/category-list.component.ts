@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class CategoryListComponent implements OnInit, OnDestroy {
   categories: Category[] = [];
   subs: Subscription;
+  isFetching = true;
 
   constructor(private categoryService: CategoryService) { }
 
@@ -18,6 +19,7 @@ export class CategoryListComponent implements OnInit, OnDestroy {
     this.subs = this.categoryService.categoriesChanged
       .subscribe((categories: Category[]) => {
         this.categories = categories;
+        this.isFetching = false;
       });
     this.categoryService.fetchCategories();
   }

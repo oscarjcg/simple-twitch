@@ -19,7 +19,7 @@ export class RecommendedListComponent implements OnInit, OnDestroy {
   WIDTH_CHANNEL_ITEM = 320;
   more = true;
   subs: Subscription;
-
+  isFetching = true;
 
   @ViewChild('container', {static: true}) container: ElementRef;
   constructor(private categoryService: CategoryService,
@@ -31,6 +31,7 @@ export class RecommendedListComponent implements OnInit, OnDestroy {
       .subscribe(categories => {
         this.categories = categories;
         this.loadList();
+        this.isFetching = false;
       });
       this.categoryService.fetchCategories();
     } else {
@@ -38,6 +39,7 @@ export class RecommendedListComponent implements OnInit, OnDestroy {
       .subscribe(channels => {
         this.channels = channels;
         this.loadList();
+        this.isFetching = false;
       });
       this.channelService.fetchChannels();
     }

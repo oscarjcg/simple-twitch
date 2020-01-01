@@ -4,11 +4,11 @@
     <!-- Brand -->
     <p class="navbar-brand"><strong>Simple Twitch</strong> </p>
     <!-- Features -->
-    <ul class="nav navbar-nav">        
-        <li>
-          <a routerLink="/">Discover</a>            
+    <ul class="nav navbar-nav list">        
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> 
+          <a routerLink="/" >Discover</a>            
         </li>
-        <li>
+        <li routerLinkActive="active">
             <a routerLink="/directory">Browse</a>
         </li> 
     </ul>

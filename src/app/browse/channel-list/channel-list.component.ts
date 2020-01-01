@@ -11,13 +11,14 @@ import { Subscription } from 'rxjs';
 export class ChannelListComponent implements OnInit, OnDestroy {
   channels: Channel[] = [];
   subs: Subscription;
-
+  isFetching = true;
   constructor(private channelService: ChannelService) { }
 
   ngOnInit() {
     this.subs = this.channelService.channelChanged
       .subscribe(channels => {
         this.channels = channels;
+        this.isFetching = false;
       });
     this.channelService.fetchChannels();
   }

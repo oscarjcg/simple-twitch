@@ -25,6 +25,8 @@ $bg-color: black;
 .feature-title {
     @extend .link;
     padding-right: 20px;
+    padding-bottom: 15px;
+    
     font-size: 20px;    
 }
 
@@ -39,4 +41,9 @@ $bg-color: black;
     input {
         width: 200px;
     }
+}
+
+.active {    
+    color: $main-color;    
+    border-bottom: 3px solid $main-color;
 }

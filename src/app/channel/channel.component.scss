@@ -1,9 +1,15 @@
 
 
 .mainContainer{
-    background: yellow; 
+    background: black; 
 }
 
 .page {
     overflow: auto; 
+}
+
+.info {
+    p {
+        color: white;
+    }
 }

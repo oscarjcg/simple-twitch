@@ -9,3 +9,12 @@
     @extend .link;
     @extend .link-hover;
 }
+
+.image {
+    border: 2px solid transparent;
+}
+
+.image:hover {
+    border: 2px solid $main-color;
+    cursor: pointer;
+}

@@ -38,7 +38,7 @@ export class ChannelService {
                     // return {...channel, imageBase64: image, previewBase64: preview, getName: Channel.caller};
             });
 
-            // console.log(c);
+            // console.log(this.channels.slice());
 
             this.channelChanged.next(this.channels.slice());
         });

@@ -17,13 +17,17 @@
                 (ready)="savePlayer($event)"
                 (change)="onStateChange($event)"
                 [width]="width"></youtube-player>
-            <p>_Title</p>
-            <p>_Title</p>
-            <p>_Title</p>
-            <p>_Title</p>
-            <p>_Title</p>
-            <p>_Title</p>
-            <p>Time: {{ currentTime }}</p>
+            <div class="info">
+                <p>Time: {{ currentTime? currentTime.toFixed(2): 0 }}</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Purus in massa tempor nec feugiat nisl pretium. </p>
+                <p>Commodo nulla facilisi nullam vehicula ipsum a.</p>
+                <p>Commodo odio aenean sed adipiscing diam. At erat pellentesque adipiscing commodo.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Odio eu feugiat pretium nibh ipsum. Cras adipiscing enim eu turpis egestas. Nisl nunc mi ipsum faucibus. Tincidunt augue interdum velit euismod in pellentesque massa placerat duis. Amet porttitor eget dolor morbi non arcu. Turpis in eu mi bibendum neque egestas. Ac ut consequat semper viverra nam. Senectus et netus et malesuada fames. Rhoncus est pellentesque elit ullamcorper dignissim cras. Eleifend quam adipiscing vitae proin sagittis. Malesuada fames ac turpis egestas integer eget. Gravida dictum fusce ut placerat orci nulla pellentesque. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et. Enim praesent elementum facilisis leo.</p>
+            </div>
+            
+            
         </div>
  
         <div class="col-sm-3 nopadding">
@@ -32,6 +36,3 @@
         </div>
     </div>
 </div>
-
-
-
