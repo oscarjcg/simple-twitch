@@ -19,11 +19,11 @@ export class ChannelComponent implements OnInit, OnDestroy {
   videoUrl = 'https://www.youtube.com/embed/LembwKDo1Dk';
   // videoUrlSanitized: SafeResourceUrl;
   player: YT.Player;
-  private id = 'LembwKDo1Dk';
+  id = 'LembwKDo1Dk';
   interval;
   currentTime: number;
-  private width = 100;
-  private height = 100;
+  width = 100;
+  height = 100;
   private RATIO_16_9 = [16, 9];
   private RATIO_4_3 = [4, 3];
   channel: Channel;

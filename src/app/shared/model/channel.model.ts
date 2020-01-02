@@ -1,5 +1,5 @@
 export class Channel {
-    constructor(private name?: string,
+    constructor(public name?: string,
                 public image?: {
                     data: {
                         type: string,
