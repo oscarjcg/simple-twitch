@@ -1,9 +1,19 @@
 # SimpleTwitch (En desarrollo)
 
-### Versión simplificada de [Twitch](https://www.twitch.tv/directory)
+
 
 **Web (En desarrollo)**: https://simple-twitch-angular.firebaseapp.com/
 
+<p align="center">
+<img style="padding: 2px;" src="images/1.png" alt="Image 1"
+	title="Preview" width="500"/>
+</p>
+<p align="center">
+<img style="padding: 2px;" src="images/2.png" alt="Image 2  "
+	title="Preview" width="500"/>
+</p>
+
+**Descripción:** Versión simplificada de [Twitch](https://www.twitch.tv/directory)
 
 **Características**:
 * Discover: Lista de recomendaciones (Categorias y canales)
