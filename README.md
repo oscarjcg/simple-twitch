@@ -13,7 +13,7 @@
 	title="Preview" width="500"/>
 </p>
 
-**Descripción:** Versión simplificada de [Twitch](https://www.twitch.tv/directory)
+**Descripción:** Versión simplificada de [Twitch](https://www.twitch.tv/directory) (Plataforma de live streaming centrada en juegos)
 
 **Características**:
 * Discover: Lista de recomendaciones (Categorias y canales)
