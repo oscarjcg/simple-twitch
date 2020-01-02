@@ -6,19 +6,24 @@
     </div>
 
     <!-- Comments -->
-    <div class="contentContainer">
-        <div class="commentContainer" *ngFor="let comment of comments">
+    <div class="contentContainer" (scroll)="onScroll($event)" #chatContainer>
+        <div class="commentContainer" *ngFor="let comment of comments" >
             <p>{{ comment.getTime() }}</p>
             <p [ngStyle]="{color: comment.getColor()}">{{ comment.username}}:</p>
-            <p>{{ comment.comment}}</p>
+            <p class="comment">{{ comment.comment}}</p>
         </div>
     </div>
 
     <!-- Enter comment -->    
     <div class="inputCommentContainer">
         <p style="color: white;">Time: {{ timeSec.toFixed(2) }}</p>
-        <div class="form-group active-purple">
-            <input class="form-control" type="text" placeholder="Send a message">
+        <div class="form-group">
+            <input 
+                class="form-control active-purple" 
+                type="text" 
+                placeholder="Send a message" 
+                (keyup.enter)="addInput()"
+                #inputChat>
         </div>        
     </div>
 

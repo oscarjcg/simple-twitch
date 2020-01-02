@@ -12,7 +12,7 @@
   templateUrl: './channel.component.html',
   styleUrls: ['./channel.component.scss']
 })
-export class ChannelComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ChannelComponent implements OnInit, OnDestroy {
   @ViewChild('videoContainer', {static: true}) iframe: ElementRef;
 
   // videoUrl = 'https://www.youtube.com/watch?v=LembwKDo1Dk';
@@ -56,10 +56,7 @@ export class ChannelComponent implements OnInit, OnDestroy, AfterViewInit {
       });
 
     this.channelService.fetchChannels();
-  }
-
-  ngAfterViewInit() {
-
+    this.startTimer();
   }
 
   savePlayer(player) {
@@ -81,7 +78,7 @@ export class ChannelComponent implements OnInit, OnDestroy, AfterViewInit {
     // console.log(this.width + ' h: ' + this.  height);
     // player.setSize(300, 600);
 
-    this.startTimer();
+
   }
 
   onStateChange(event) {
@@ -90,13 +87,14 @@ export class ChannelComponent implements OnInit, OnDestroy, AfterViewInit {
 
   startTimer() {
     this.interval = setInterval(() => {
-      this.currentTime = this.player.getCurrentTime();
-      this.channelService.currentTimeChanged.next(this.currentTime);
-      if (!this.videoInitCorrected) {
-        this.onResize();
-        this.videoInitCorrected = true;
+      if (this.player) {
+        this.currentTime = this.player.getCurrentTime();
+        this.channelService.currentTimeChanged.next(this.currentTime);
+        if (!this.videoInitCorrected) {
+          this.onResize();
+          this.videoInitCorrected = true;
+        }
       }
-
     }, 100);
   }
 
@@ -113,5 +111,6 @@ export class ChannelComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+    clearInterval(this.interval);
   }
 }

@@ -10,7 +10,7 @@ export class CommentChat {
 
     // min:sec
     getTime() {
-        return (Math.floor(this.timeSeconds / 60)) + ':' + (this.timeSeconds % 60);
+        return (Math.floor(this.timeSeconds / 60)) + ':' + (this.timeSeconds % 60).toFixed(0);
     }
 
     getColor() {

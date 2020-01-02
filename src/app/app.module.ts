@@ -22,7 +22,8 @@ import { SimpleChannelItemComponent } from './simple-channel-list/simple-channel
 import { RecommendedListComponent } from './discover/recommended-list/recommended-list.component';
 import { GameComponent } from './browse/game/game.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SpinnerComponent } from './spinner/spinner.component';
+import { SpinnerComponent } from './UI/spinner/spinner.component';
+import { SearchBarComponent } from './UI/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     SimpleChannelItemComponent,
     RecommendedListComponent,
     GameComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

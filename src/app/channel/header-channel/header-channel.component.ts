@@ -8,10 +8,15 @@ import { Channel } from 'src/app/shared/model/channel.model';
 })
 export class HeaderChannelComponent implements OnInit {
   @Input() channel: Channel;
-
-  constructor() { }
+  smallScreen = false;
+  bootstrapStack = 768;
 
   ngOnInit() {
+    this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
+  }
+
+  onResize() {
+    this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
   }
 
 }

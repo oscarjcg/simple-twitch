@@ -1,5 +1,6 @@
 
-<div class="main-container">
+<app-spinner *ngIf="!channel"></app-spinner>
+<div class="main-container" *ngIf="channel" (window:resize)="onResize()">
     <!-- Image and name -->
     <img 
         src="{{ channel.imageBase64 }}" 
@@ -8,17 +9,19 @@
         style="border-radius: 50%; color: white; margin-left: 10px; margin-right: 10px;">
     <a class="channel-name">{{ channel.name }}</a>
     <div class="navbar-header">
-        <!-- Features -->
-        <ul class="nav navbar-nav">        
+        <!-- Features -->              
+        <ul class="nav navbar-nav" [ngClass]="{'collapse': smallScreen}">        
             <li>
-                <a routerLink="/">Home</a>            
+                <a routerLink="/{{ channel.name }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>            
             </li>
             <li>
-                <a routerLink="/">Videos</a>
+                <a routerLink="/{{ channel.name }}/videos" routerLinkActive="active">Videos</a>
             </li> 
             <li>
-                <a routerLink="/">Clips</a>
+                <a routerLink="/{{ channel.name }}/clips" routerLinkActive="active">Clips</a>
             </li> 
         </ul>
+        
+        
     </div>
-  </div>
+</div>

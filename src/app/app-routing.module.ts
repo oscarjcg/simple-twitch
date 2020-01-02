@@ -21,7 +21,11 @@ const appRoutes: Routes = [
         { path: 'all', component: ChannelListComponent},
         { path: 'game', component: CategoryListComponent},
     ]},
-    { path: ':channel', component: ChannelComponent}
+    { path: ':channel', component: ChannelComponent, children: [
+        { path: '', component: ChannelComponent},
+        { path: 'videos', component: ChannelComponent},
+        { path: 'clips', component: ChannelComponent}
+    ]}
 ];
 
 @NgModule({

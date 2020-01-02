@@ -2,18 +2,18 @@
 $main-color: #c466d4;
 $normal-text-color: white;
 
-.active-purple {       
-    input {
-        background-color: rgb(85, 85, 85);
-        color: white;
-        border-color: transparent;
-    }
+.active-purple {           
+    background-color: rgb(85, 85, 85);
+    color: white;
+    border: 2px solid transparent; 
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
-.active-purple:focus {
+.active-purple:focus {    
     border: 2px solid $main-color;
     box-shadow: 0 0 0 1px $main-color;
-    background-color: black;
+    background-color: black;      
 }
 
 ::placeholder { 

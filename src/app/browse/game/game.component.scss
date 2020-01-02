@@ -36,7 +36,8 @@ $bg-color: black;
 
 .container-search-bar {
     display: flex; 
-    padding-top: 20px;   
+    align-items: center;
+    padding-top: 30px;   
     padding-bottom: 20px;
     input {
         width: 200px;
@@ -46,4 +47,4 @@ $bg-color: black;
 .active {    
     color: $main-color;    
     border-bottom: 3px solid $main-color;
-}
+} 

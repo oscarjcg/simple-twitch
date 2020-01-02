@@ -1,0 +1,17 @@
+@import 'src/styles';
+
+.search-bar-container {
+    display: flex;
+    align-items: center;    
+}
+
+.icon {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: 2px;
+    cursor: pointer;
+}
+
+.icon:hover path:nth-child(1) {
+    fill: grey;
+}

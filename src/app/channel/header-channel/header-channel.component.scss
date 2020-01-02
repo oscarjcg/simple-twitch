@@ -19,11 +19,13 @@ $border-color: 1px solid black;
 
 ul {
     li {
-        a {
-            color: $normal-text-color;
-            background-color: transparent;
+        a {            
+            background-color: transparent;            
         }
-    }
+        a:not(.active) {
+            color: $normal-text-color;            
+        }
+    }    
 }
 
 ul {
@@ -42,3 +44,8 @@ ul {
         }
     }
 }
+
+.active {    
+    color: $main-color;    
+    border-bottom: 3px solid $main-color;
+} 

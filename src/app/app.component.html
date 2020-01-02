@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" (window:resize)="onResize()">
     <div class="row">
         <div class="col-sm-12 nopadding">
             <app-header></app-header>
@@ -6,7 +6,7 @@
     </div>
     
     <div class="row">
-        <div class="col-sm-2 nopadding">
+        <div class="col-sm-2 nopadding" *ngIf="!smallScreen">
             <app-simple-channel-list></app-simple-channel-list>
         </div>
         <div class="col-sm-10 nopadding">
