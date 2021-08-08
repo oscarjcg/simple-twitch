@@ -6,23 +6,16 @@ import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class CategoryService {
-    // private categories: Category[] = [
-    //     new Category('League of Legends', 'lol.jpg'),
-    //     new Category('Grand Theft Auto V', 'gta.jpg'),
-    //     new Category('Apex Legends', 'apex.jpg'),
-    //     new Category('Counter-Strike: Global Offensive', 'counter-strike.jpg'),
-    //     new Category('God of War', 'god-of-war.jpg'),
-    //     new Category('Overwatch', 'overwatch.jpg'),
-    //     new Category('Tom Clancy\'s Rainbow Six: Siege', 'rainbowsix-siege.jpg')
-    // ];
+
     private categories: Category[] = [];
     categoriesChanged = new Subject<Category[]>();
     // Backend
     // private BASE_URL = 'http://localhost:3000/';
-    private BASE_URL = 'https://rocky-forest-64018.herokuapp.com/';
+    //private BASE_URL = 'https://rocky-forest-64018.herokuapp.com/';
+    private BASE_URL = 'https://backend-simple-twitch.oscarcatarigutierrez.com/api/';
 
 
-    constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {
 
     }
 
@@ -32,14 +25,9 @@ export class CategoryService {
         .subscribe(categories => {
             this.categories = categories.map(
                 category => {
-                    const base64 = 'data:image/png;base64,' +
-                        btoa(new Uint8Array(category.image.data.data).reduce((data, byte) => {
-                            return data + String.fromCharCode(byte);
-                        }, ''));
-
-                    return {...category, imageBase64: base64};
+                    return {...category, imageBase64: category.image};
             });
-            // console.log(this.categories);
+            console.log(this.categories);
 
             this.categoriesChanged.next(this.categories.slice());
         });

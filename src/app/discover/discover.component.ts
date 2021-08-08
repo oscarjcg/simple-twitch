@@ -8,7 +8,7 @@ import { DataComponentService } from '../shared/service/data-component.service';
 })
 export class DiscoverComponent implements OnInit {
   height = '0px';
-  recommendations = ['categories', 'Grand Theft Auto V', 'Apex Legends'];
+  recommendations = ['categories', 'Simulation'];
 
   constructor(private dataComponentService: DataComponentService) { }
 

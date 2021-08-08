@@ -18,6 +18,8 @@ export class ChannelComponent implements OnInit, OnDestroy {
   // videoUrl = 'https://www.youtube.com/watch?v=LembwKDo1Dk';
   videoUrl = 'https://www.youtube.com/embed/LembwKDo1Dk';
   // videoUrlSanitized: SafeResourceUrl;
+   url: string = "https://models3d.oscarcatarigutierrez.com/?model=";
+   urlSafe: SafeResourceUrl;
   player: YT.Player;
   id = 'LembwKDo1Dk';
   interval;
@@ -26,6 +28,9 @@ export class ChannelComponent implements OnInit, OnDestroy {
   height = 100;
   private RATIO_16_9 = [16, 9];
   private RATIO_4_3 = [4, 3];
+  public TYPE_YOUTUBE = 1;
+  public TYPE_3D_MODEL = 2;
+
   channel: Channel;
   subs: Subscription;
 
@@ -46,6 +51,8 @@ export class ChannelComponent implements OnInit, OnDestroy {
     this.subs = this.channelService.channelChanged
       .subscribe(channels => {
         this.channel = this.channelService.getChannel(this.route.snapshot.params.channel);
+        this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url + this.channel.content);
+
       });
 
     this.heightChannel = this.dataComponentService.calculateHeightNoHeader() + 'px';
@@ -57,6 +64,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
 
     this.channelService.fetchChannels();
     this.startTimer();
+    this.set3DModelFrameSize(this.RATIO_16_9);
   }
 
   savePlayer(player) {
@@ -79,6 +87,14 @@ export class ChannelComponent implements OnInit, OnDestroy {
     // player.setSize(300, 600);
 
 
+  }
+
+  set3DModelFrameSize(ratio: number[]) {
+    this.width = this.iframe.nativeElement.clientWidth;
+    this.height = this.calculateHeight(
+      this.width,
+      ratio[0],
+      ratio[1]);
   }
 
   onStateChange(event) {
@@ -104,7 +120,10 @@ export class ChannelComponent implements OnInit, OnDestroy {
 
   onResize() {
     // console.log('Resize');
-    this.playerConfig(this.player, this.RATIO_16_9);
+    if (this.player)
+      this.playerConfig(this.player, this.RATIO_16_9);
+    this.set3DModelFrameSize(this.RATIO_16_9);
+
     this.heightChannel = this.dataComponentService.calculateHeightNoHeader() + 'px';
     this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
   }

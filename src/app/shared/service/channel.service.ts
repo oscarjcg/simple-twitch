@@ -5,36 +5,25 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 export class ChannelService {
-    // channels: Channel[] = [
-    //     new Channel('Channel1', 'c1.jpg', 'live.jpg'),
-    //     new Channel('Channel2', 'c2.png', 'live.jpg'),
-    //     new Channel('Channel3', 'c3.png', 'live.jpg'),
-    //     new Channel('Channel4', 'c4.png', 'live.jpg')
-    // ];
+
     channels: Channel[] = [];
     channelChanged = new Subject<Channel[]>();
     currentTimeChanged = new Subject<number>();
     // Backend
-    private BASE_URL = 'https://rocky-forest-64018.herokuapp.com/';
+    //private BASE_URL = 'https://rocky-forest-64018.herokuapp.com/';
     // private BASE_URL = 'http://localhost:3000/';
+    private BASE_URL = 'https://backend-simple-twitch.oscarcatarigutierrez.com/api/';
 
-    constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) {}
 
     fetchChannels() {
         this.http.get<Channel[]>(this.BASE_URL + 'channels')
         .subscribe(channels => {
             this.channels = channels.map(
                 channel => {
-                    // console.log('C ', channel);
-                    const image = 'data:image/png;base64,' +
-                        btoa(new Uint8Array(channel.image.data.data).reduce((data, byte) => {
-                            return data + String.fromCharCode(byte);
-                        }, ''));
-                    const preview = 'data:image/png;base64,' +
-                    btoa(new Uint8Array(channel.preview.data.data).reduce((data, byte) => {
-                        return data + String.fromCharCode(byte);
-                    }, ''));
-                    return Channel.from({...channel, imageBase64: image, previewBase64: preview});
+
+                    return Channel.from({...channel, imageBase64: channel.image, previewBase64: channel.preview});
                     // return {...channel, imageBase64: image, previewBase64: preview, getName: Channel.caller};
             });
 

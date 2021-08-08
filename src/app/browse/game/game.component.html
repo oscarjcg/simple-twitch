@@ -1,26 +1,28 @@
 <div class="container-fluid main-container" [ngStyle]="{height: height}">
 
     <app-spinner *ngIf="isFetching"></app-spinner>
-    <div class="header" *ngIf="!isFetching">        
-        <img 
+    <div class="header" *ngIf="!isFetching">
+        <img
             src="{{ category.imageBase64 }}"
-            alt="{{ category.name }}" 
+            alt="{{ category.name }}"
             width="150"
             style="margin-right: 20px">
         <h1 class="title">{{ category.name }}</h1>
     </div>
-      
-    <!-- Sections  -->    
-    <a class="feature-title" 
-        routerLink="/directory/game/{{ game }}" 
-        routerLinkActive="active" 
+
+    <!-- Sections  -->
+    <a class="feature-title"
+        routerLink="/directory/game/{{ game }}"
+        routerLinkActive="active"
         [routerLinkActiveOptions]="{exact: true}">Live Channels</a>
-    <a class="feature-title" 
-        routerLink="/directory/game/{{ game }}/videos/all" 
+    <!--
+    <a class="feature-title"
+        routerLink="/directory/game/{{ game }}/videos/all"
         routerLinkActive="active">Videos</a>
-    <a class="feature-title" 
-        routerLink="/directory/game/{{ game }}/clips" 
+    <a class="feature-title"
+        routerLink="/directory/game/{{ game }}/clips"
         routerLinkActive="active">Clips</a>
+        -->
     <!-- Search -->
     <div class="container-search-bar ">
         <p class="title" >Filter by </p>
