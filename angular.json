@@ -28,7 +28,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -92,9 +91,9 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [              
+            "styles": [
               "src/styles.scss"
-            ], 
+            ],
             "scripts": []
           }
         },
