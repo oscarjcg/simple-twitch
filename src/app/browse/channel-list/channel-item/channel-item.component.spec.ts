@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ChannelItemComponent } from './channel-item.component';
 
@@ -6,7 +6,7 @@ describe('ChannelItemComponent', () => {
   let component: ChannelItemComponent;
   let fixture: ComponentFixture<ChannelItemComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ChannelItemComponent ]
     })
