@@ -41,6 +41,8 @@ export class ChannelComponent implements OnInit, OnDestroy {
   // Temporal fix. Error in initial video config, generates botton bar, on resize is fixed.
   videoInitCorrected = false;
 
+  private param: string;
+
   constructor(private sanitizer: DomSanitizer,
               private channelService: ChannelService,
               private route: ActivatedRoute,
@@ -52,13 +54,13 @@ export class ChannelComponent implements OnInit, OnDestroy {
       .subscribe(channels => {
         this.channel = this.channelService.getChannel(this.route.snapshot.params.channel);
         this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url + this.channel.content);
-
       });
 
     this.heightChannel = this.dataComponentService.calculateHeightNoHeader() + 'px';
     this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
     this.route.params
       .subscribe((params: Params) => {
+        this.channel = null;
         this.channelService.fetchChannels();
       });
 

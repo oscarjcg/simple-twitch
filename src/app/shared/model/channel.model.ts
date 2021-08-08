@@ -1,5 +1,6 @@
 export class Channel {
-    constructor(public name?: string,
+    constructor(public id?: number,
+                public name?: string,
                 public image?: string,
                 public imageBase64?: string,
                 public preview?: string,

@@ -30,13 +30,11 @@
           </div>
           -->
 
-
-
       </div>
 
       <div class="col-sm-3 nopadding">
           <!-- Chat    -->
-            <app-chat *ngIf="!smallScreen"></app-chat>
+            <app-chat *ngIf="!smallScreen && channel" [channel]="channel"></app-chat>
         </div>
     </div>
 </div>

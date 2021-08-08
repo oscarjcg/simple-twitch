@@ -3,9 +3,14 @@
 export class CommentChat {
     private colors: string[] = ['red', 'blue', 'yellow', 'purple'];
 
-    constructor(public username: string,
+    constructor(
+                public id: number,
+                public channel_id: number,
+                public author: string,
                 public comment: string,
-                public timeSeconds: number,
+                public crated_at: string,
+                public updated_at: string,
+                public timeSeconds?: number,
                 public color?: string) {}
 
     // min:sec

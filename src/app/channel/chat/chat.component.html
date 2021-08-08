@@ -2,14 +2,15 @@
 <div class="mainContainer" (window:resize)="onResize()" [ngStyle]="{height: heightChat}">
     <!-- Header -->
     <div class="header">
-        <p class="title">STREAM CHAT</p>
+        <p class="title">CHAT</p>
     </div>
 
     <!-- Comments -->
     <div class="contentContainer" (scroll)="onScroll($event)" #chatContainer>
         <div class="commentContainer" *ngFor="let comment of comments" >
-            <p>{{ comment.getTime() }}</p>
-            <p [ngStyle]="{color: comment.getColor()}">{{ comment.username}}:</p>
+            <!--<p>{{ comment.getTime() }}</p>-->
+            <!--<p [ngStyle]="{color: comment.getColor()}">{{ comment.author}}:</p>-->
+            <p >{{ comment.author}}:</p>
             <p class="comment">{{ comment.comment}}</p>
         </div>
     </div>

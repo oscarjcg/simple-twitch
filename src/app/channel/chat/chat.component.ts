@@ -4,6 +4,7 @@ import { ChatService } from 'src/app/shared/service/chat.service';
 import { ChannelService } from 'src/app/shared/service/channel.service';
 import { Subscription } from 'rxjs';
 import { DataComponentService } from 'src/app/shared/service/data-component.service';
+import {Channel} from "../../shared/model/channel.model";
 
 @Component({
   selector: 'app-chat',
@@ -21,6 +22,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   manualScroll = false;
   autoScroll = true;
 
+  @Input() channel: Channel;
+
   constructor(private chatService: ChatService,
               private channelService: ChannelService,
               private dataComponentService: DataComponentService) { }
@@ -28,15 +31,17 @@ export class ChatComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.chatService.commentsChanged
       .subscribe(comments => {
-        this.allComments = this.chatService.getComments();
+        this.allComments = comments;
+        this.comments = this.allComments;
       });
 
     this.timeSec = 0;
-    this.allComments = this.chatService.getComments();
+    //this.allComments = this.chatService.getComments();
     this.loadCommentsUntil(this.timeSec);
 
     this.currentTimeSubs = this.channelService.currentTimeChanged.subscribe(newTime => {
       this.timeSec = newTime;
+      /*
       this.loadCommentsUntil(this.timeSec);
 
       if (!this.manualScroll) {
@@ -44,10 +49,12 @@ export class ChatComponent implements OnInit, OnDestroy {
             this.chatContainer.nativeElement.scrollHeight - this.chatContainer.nativeElement.clientHeight;
         this.autoScroll = true;
       }
+       */
 
     });
 
     this.heightChat = this.dataComponentService.calculateHeightNoHeader() + 'px';
+    this.chatService.fetchComments(this.channel.name);
   }
 
   onScroll(event) {
@@ -58,8 +65,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   addInput() {
-    const comment = new CommentChat('newUser', this.inputChat.nativeElement.value, this.timeSec);
-    this.chatService.addComment(comment);
+    //const comment = new CommentChat(0, 'Angular App', this.inputChat.nativeElement.value);
+    this.chatService.addComment(this.channel.name, this.channel.id, 'Angular App', this.inputChat.nativeElement.value);
     this.inputChat.nativeElement.value = '';
   }
 
@@ -68,9 +75,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   private loadCommentsUntil(seconds: number) {
+    /*
     this.comments = this.allComments.filter(value => {
       return value.timeSeconds <= seconds;
     });
+     */
+    this.comments = this.allComments;
   }
 
   onResize() {
