@@ -6,7 +6,7 @@ export class Channel {
                 public preview?: string,
                 public previewBase64?: string,
                 public content?: string,
-                public type?: string) {
+                public type?: number) {
 
     }
 

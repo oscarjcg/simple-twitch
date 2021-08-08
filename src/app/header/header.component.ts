@@ -7,7 +7,7 @@ import { DataComponentService } from '../shared/service/data-component.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
-  @ViewChild('header', {static: false}) headerRef: ElementRef;
+  @ViewChild('header') headerRef: ElementRef;
 
   constructor(private dataComponentService: DataComponentService) { }
 
