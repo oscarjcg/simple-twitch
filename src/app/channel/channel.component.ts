@@ -5,6 +5,7 @@
  import { ActivatedRoute, Params } from '@angular/router';
  import { DataComponentService } from '../shared/service/data-component.service';
  import { Subscription } from 'rxjs';
+ import {ChatSocketIoService} from "../shared/service/chat-socket-io.service";
 
 
  @Component({
@@ -41,12 +42,13 @@ export class ChannelComponent implements OnInit, OnDestroy {
   // Temporal fix. Error in initial video config, generates botton bar, on resize is fixed.
   videoInitCorrected = false;
 
-  private param: string;
+  totalPeople:number = 0;
 
   constructor(private sanitizer: DomSanitizer,
               private channelService: ChannelService,
               private route: ActivatedRoute,
-              private dataComponentService: DataComponentService) {
+              private dataComponentService: DataComponentService,
+              private chatSocketIoService: ChatSocketIoService) {
   }
 
   ngOnInit() {
@@ -63,6 +65,12 @@ export class ChannelComponent implements OnInit, OnDestroy {
         this.channel = null;
         this.channelService.fetchChannels();
       });
+
+    this.chatSocketIoService.chatPeopleChanged.subscribe(total => {
+      this.totalPeople = total;
+    });
+
+    this.chatSocketIoService.connectChat();
 
     this.channelService.fetchChannels();
     this.startTimer();
@@ -133,5 +141,6 @@ export class ChannelComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subs.unsubscribe();
     clearInterval(this.interval);
+    this.chatSocketIoService.disconnectChat();
   }
 }

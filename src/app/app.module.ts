@@ -24,7 +24,9 @@ import { GameComponent } from './browse/game/game.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './UI/spinner/spinner.component';
 import { SearchBarComponent } from './UI/search-bar/search-bar.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
+const config: SocketIoConfig = { url: 'https://st-node.oscarcatarigutierrez.com', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,8 @@ import { SearchBarComponent } from './UI/search-bar/search-bar.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxYoutubePlayerModule.forRoot()
+    NgxYoutubePlayerModule.forRoot(),
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import { ChannelService } from 'src/app/shared/service/channel.service';
 import { Subscription } from 'rxjs';
 import { DataComponentService } from 'src/app/shared/service/data-component.service';
 import {Channel} from "../../shared/model/channel.model";
+import {ChatSocketIoService} from "../../shared/service/chat-socket-io.service";
 
 @Component({
   selector: 'app-chat',
@@ -26,7 +27,8 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   constructor(private chatService: ChatService,
               private channelService: ChannelService,
-              private dataComponentService: DataComponentService) { }
+              private dataComponentService: DataComponentService,
+              private chatSocketIoService: ChatSocketIoService) { }
 
   ngOnInit() {
     this.chatService.commentsChanged
@@ -52,6 +54,11 @@ export class ChatComponent implements OnInit, OnDestroy {
        */
 
     });
+
+    this.chatSocketIoService.chatMessagesChanged.subscribe(() => {
+      this.chatService.fetchComments(this.channel.name);
+    });
+
 
     this.heightChat = this.dataComponentService.calculateHeightNoHeader() + 'px';
     this.chatService.fetchComments(this.channel.name);

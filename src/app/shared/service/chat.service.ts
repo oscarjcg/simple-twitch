@@ -38,7 +38,7 @@ export class ChatService {
       this.BASE_URL + 'comments',
       {channel_id: channelId, author: author, comment: comment})
       .subscribe(comment => {
-        this.fetchComments(channelName);
+        //this.fetchComments(channelName);
       });
 
   }
