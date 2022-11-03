@@ -1,9 +1,16 @@
 @import 'src/styles';
 
 .main-container {
-    background-color: rgb(48, 48, 48);    
-} 
+    background-color: rgb(48, 48, 48);
+  overflow: auto;
+}
 .title {
-    color: white;   
+    color: white;
     padding: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    display: none;
+  }
 }

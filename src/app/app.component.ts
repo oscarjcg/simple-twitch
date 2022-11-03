@@ -11,10 +11,10 @@ export class AppComponent implements OnInit {
   bootstrapStack = 768;
 
   ngOnInit() {
-    this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
+    //this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
   }
 
   onResize() {
-    this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
+    //this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
   }
 }

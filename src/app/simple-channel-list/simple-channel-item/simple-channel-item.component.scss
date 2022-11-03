@@ -8,4 +8,20 @@
 }
 .channel-name {
     color: white;
+    margin: 5px;
+}
+
+.channel-item {
+  display: flex;
+  align-items: center;
+
+  img {
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .channel-name {
+    display: none;
+  }
 }

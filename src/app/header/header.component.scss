@@ -1,6 +1,6 @@
 @import 'src/styles';
 
-$bg-color: rgb(34, 34, 34); 
+$bg-color: rgb(34, 34, 34);
 
 .main-container {
     display: flex;
@@ -13,12 +13,13 @@ p {
 }
 
 .list {
+  display: flex;
     li:not(.active) {
         a {
-            color: $normal-text-color;            
+            color: $normal-text-color;
         }
     }
-    
+
     li {
         a {
             background-color: transparent;
@@ -27,16 +28,16 @@ p {
             color: $main-color;
             background-color: transparent;
         }
-        a:visited {         
+        a:visited {
             background-color: transparent;
-        } 
+        }
     }
 }
 
 .active {
     a {
         color: $main-color;
-    }    
+    }
     border-bottom: 3px solid $main-color;
 }
 
