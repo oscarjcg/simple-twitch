@@ -9,10 +9,9 @@ export class CategoryService {
 
   private categories: Category[] = [];
   categoriesChanged = new Subject<Category[]>();
-  // Backend
-  // private BASE_URL = 'http://localhost:3000/';
-  //private BASE_URL = 'https://rocky-forest-64018.herokuapp.com/';
-  private BASE_URL = 'https://backend-simple-twitch.oscarcatarigutierrez.com/api/';
+ 
+  //private BASE_URL = 'http://localhost:8086/api/';
+  private BASE_URL = 'https://st-dotnet.oscarcatarigutierrez.com/api/';
 
 
   constructor(private http: HttpClient) {
@@ -21,7 +20,7 @@ export class CategoryService {
 
   fetchCategories() {
     // New copy
-    this.http.get<Category[]>(this.BASE_URL + 'categories')
+    this.http.get<Category[]>(this.BASE_URL + 'category')
       .subscribe(categories => {
         this.categories = categories.map(
           category => {

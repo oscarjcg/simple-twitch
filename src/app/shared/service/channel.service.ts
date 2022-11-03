@@ -9,16 +9,15 @@ export class ChannelService {
     channels: Channel[] = [];
     channelChanged = new Subject<Channel[]>();
     currentTimeChanged = new Subject<number>();
-    // Backend
-    //private BASE_URL = 'https://rocky-forest-64018.herokuapp.com/';
-    // private BASE_URL = 'http://localhost:3000/';
-    private BASE_URL = 'https://backend-simple-twitch.oscarcatarigutierrez.com/api/';
+
+    //private BASE_URL = 'http://localhost:8086/api/';
+    private BASE_URL = 'https://st-dotnet.oscarcatarigutierrez.com/api/';
 
 
   constructor(private http: HttpClient) {}
 
     fetchChannels() {
-        this.http.get<Channel[]>(this.BASE_URL + 'channels')
+        this.http.get<Channel[]>(this.BASE_URL + 'channel')
         .subscribe(channels => {
             this.channels = channels.map(
                 channel => {
