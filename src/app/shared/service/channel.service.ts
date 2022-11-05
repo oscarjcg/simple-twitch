@@ -21,7 +21,7 @@ export class ChannelService {
         .subscribe(channels => {
             this.channels = channels.map(
                 channel => {
-
+                    channel.type = channel.channelTypeId;
                     return Channel.from({...channel, imageBase64: channel.image, previewBase64: channel.preview});
                     // return {...channel, imageBase64: image, previewBase64: preview, getName: Channel.caller};
             });

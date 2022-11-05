@@ -8,6 +8,7 @@ export class CommentChat {
                 public channel_id: number,
                 public author: string,
                 public comment: string,
+                public text: string,
                 public crated_at: string,
                 public updated_at: string,
                 public timeSeconds?: number,

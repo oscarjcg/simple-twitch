@@ -22,6 +22,7 @@ export class ChatService {
       .subscribe(comments => {
         this.comments = comments.map(
           comment => {
+            comment.comment = comment.text
             return comment;
           });
 
