@@ -36,9 +36,14 @@ export class ChatService {
   }
 
   addComment(channelName: string, channelId: number, author: string, comment: string) {
+    var formData: any = new FormData();
+    formData.append('channel_id', channelId);
+    formData.append('author', author);
+    formData.append('comment', comment);
+
     this.http.post<CommentChat[]>(
       this.BASE_URL + 'comment',
-      {channel_id: channelId, author: author, comment: comment})
+      formData)
       .subscribe(comment => {
         //this.fetchComments(channelName);
       });
