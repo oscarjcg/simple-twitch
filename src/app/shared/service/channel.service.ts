@@ -12,7 +12,7 @@ export class ChannelService {
     // Backend
     //private BASE_URL = 'https://rocky-forest-64018.herokuapp.com/';
     // private BASE_URL = 'http://localhost:3000/';
-    private BASE_URL = 'https://backend-simple-twitch.oscarcatarigutierrez.com/api/';
+    private BASE_URL = 'https://backend-simple-twitch.codename-project.com/api/';
 
 
   constructor(private http: HttpClient) {}

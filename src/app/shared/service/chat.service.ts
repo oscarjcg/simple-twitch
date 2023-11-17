@@ -6,7 +6,7 @@ import {Channel} from "../model/channel.model";
 
 @Injectable({providedIn: 'root'})
 export class ChatService {
-  private BASE_URL = 'https://backend-simple-twitch.oscarcatarigutierrez.com/api/';
+  private BASE_URL = 'https://backend-simple-twitch.codename-project.com/api/';
 
 
   comments: CommentChat[] = [
