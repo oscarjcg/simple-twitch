@@ -11,7 +11,7 @@ export class ChannelService {
     currentTimeChanged = new Subject<number>();
 
     //private BASE_URL = 'http://localhost:8086/api/';
-    private BASE_URL = 'https://st-dotnet.oscarcatarigutierrez.com/api/';
+    private BASE_URL = 'https://st-dotnet.codename-project.com/api/';
 
 
   constructor(private http: HttpClient) {}

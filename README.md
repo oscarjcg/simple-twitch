@@ -2,7 +2,7 @@
 
 
 
-**Web (En desarrollo)**: https://simple-twitch.oscarcatarigutierrez.com/
+**Web (En desarrollo)**: https://simple-twitch.codename-project.com/
 
 <p align="center">
 <img style="padding: 2px;" src="images/angular1.png" alt="Image 1"

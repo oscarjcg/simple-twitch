@@ -26,7 +26,7 @@ import { SpinnerComponent } from './UI/spinner/spinner.component';
 import { SearchBarComponent } from './UI/search-bar/search-bar.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'https://st-node.oscarcatarigutierrez.com', options: {} };
+const config: SocketIoConfig = { url: 'https://st-node.codename-project.com', options: {} };
 @NgModule({
   declarations: [
     AppComponent,

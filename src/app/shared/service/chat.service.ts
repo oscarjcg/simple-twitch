@@ -7,7 +7,7 @@ import {Channel} from "../model/channel.model";
 @Injectable({providedIn: 'root'})
 export class ChatService {
   //private BASE_URL = 'http://localhost:8086/api/';
-  private BASE_URL = 'https://st-dotnet.oscarcatarigutierrez.com/api/';
+  private BASE_URL = 'https://st-dotnet.codename-project.com/api/';
 
 
   comments: CommentChat[] = [

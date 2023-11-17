@@ -19,7 +19,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
   // videoUrl = 'https://www.youtube.com/watch?v=LembwKDo1Dk';
   videoUrl = 'https://www.youtube.com/embed/LembwKDo1Dk';
   // videoUrlSanitized: SafeResourceUrl;
-   url: string = "https://models3d.oscarcatarigutierrez.com/?model=";
+   url: string = "https://models3d.codename-project.com/?model=";
    urlSafe: SafeResourceUrl;
   player: YT.Player;
   id = 'LembwKDo1Dk';
