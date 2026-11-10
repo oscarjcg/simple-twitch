@@ -8,8 +8,8 @@ describe('ChannelListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChannelListComponent ]
-    })
+    imports: [ChannelListComponent]
+})
     .compileComponents();
   }));
 

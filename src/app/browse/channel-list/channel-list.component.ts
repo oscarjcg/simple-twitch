@@ -1,29 +1,31 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Channel } from 'src/app/shared/model/channel.model';
 import { ChannelService } from 'src/app/shared/service/channel.service';
-import { Subscription } from 'rxjs';
+import { SpinnerComponent } from '../../UI/spinner/spinner.component';
+import { ChannelItemComponent } from './channel-item/channel-item.component';
 
 @Component({
-  selector: 'app-channel-list',
-  templateUrl: './channel-list.component.html',
-  styleUrls: ['./channel-list.component.scss']
+    selector: 'app-channel-list',
+    templateUrl: './channel-list.component.html',
+    styleUrls: ['./channel-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [SpinnerComponent, ChannelItemComponent]
 })
-export class ChannelListComponent implements OnInit, OnDestroy {
+export class ChannelListComponent implements OnInit {
+  private channelService = inject(ChannelService);
+  private destroyRef = inject(DestroyRef);
+
   channels: Channel[] = [];
-  subs: Subscription;
   isFetching = true;
-  constructor(private channelService: ChannelService) { }
 
   ngOnInit() {
-    this.subs = this.channelService.channelChanged
+    this.channelService.channelChanged
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(channels => {
         this.channels = channels;
         this.isFetching = false;
       });
     this.channelService.fetchChannels();
-  }
-
-  ngOnDestroy() {
-    this.subs.unsubscribe();
   }
 }

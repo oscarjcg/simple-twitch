@@ -8,8 +8,8 @@ describe('SearchBarComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchBarComponent ]
-    })
+    imports: [SearchBarComponent]
+})
     .compileComponents();
   }));
 

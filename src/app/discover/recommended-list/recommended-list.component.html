@@ -1,24 +1,28 @@
-<h4 class="title">Recommended <a href="#" class="link-category">{{ category}}</a> </h4>
+<h4 class="title">Recommended <a href="#" class="link-category">{{ category()}}</a> </h4>
 
-<app-spinner *ngIf="isFetching"></app-spinner>
-<div class=" main-container" (window:resize)="onResize()" #container>      
-    <app-category-item     
-    *ngFor="let cat of categories"
-    [category]=cat ></app-category-item>  
-      
-    <app-channel-item   
-    *ngFor="let channel of channels"
-    [channel]=channel ></app-channel-item>   
-     
+@if (isFetching) {
+  <app-spinner />
+}
+<div class=" main-container" #container>
+  @for (cat of categories; track cat.name) {
+    <app-category-item [category]=cat  />
+  }
+
+  @for (channel of channels; track channel.id) {
+    <app-channel-item [channel]=channel  />
+  }
+
 </div>
 
-<div class="more-container">      
-    <hr style="flex-grow: 1">          
+<div class="more-container">
+  <hr style="flex-grow: 1">
+  @if (more) {
     <p
-        class="more"         
-        (click)="onMore()"
-        *ngIf="more">
-        Show more <span class="glyphicon glyphicon-menu-down"></span>
-    </p>  
-    <hr style="flex-grow: 1; align-self: center;">          
-</div>   
+      class="more"
+      (click)="onMore()"
+      >
+      Show more <span class="glyphicon glyphicon-menu-down"></span>
+    </p>
+  }
+  <hr style="flex-grow: 1; align-self: center;">
+</div>

@@ -1,39 +1,44 @@
 
 
 <div class="container-fluid">
-    <div class="row mainContainer">
-        <div
-            class="col-sm-9 nopadding page"
-            [ngStyle]="{height: heightChannel}"
-            (window:resize)="onResize()"
-            #videoContainer>
+  <div class="row mainContainer">
+    <div
+      class="col-sm-9 nopadding page"
+      [style.height]="heightChannel"
+     
+      #videoContainer>
 
-            <!-- Header -->
-            <app-header-channel [channel]="channel" ></app-header-channel>
-            <!-- Video -->
-          <iframe #iframe
-                  *ngIf="channel && channel.type == TYPE_3D_MODEL"
-                  [width]="this.width"
-                  [height]="this.height"
-                  [src]="urlSafe"
-                  ></iframe>
-          <youtube-player
-              *ngIf="channel && channel.type == TYPE_YOUTUBE"
-              [videoId]="channel.content"
-              (ready)="savePlayer($event)"
-              (change)="onStateChange($event)"
-              [width]="width"></youtube-player>
+      <!-- Header -->
+      <app-header-channel [channel]="channel"  />
+      <!-- Video -->
+      @if (channel && channel.type == TYPE_3D_MODEL) {
+        <iframe #iframe
+          [width]="width"
+          [height]="height"
+          [src]="urlSafe"
+        ></iframe>
+      }
+      @if (channel && channel.type == TYPE_YOUTUBE) {
+        <youtube-player [videoId]="channel.content"
+          (ready)="savePlayer($event.target)"
+          (stateChange)="onStateChange($event)"
+          [disablePlaceholder]="true"
+          [width]="width"
+        [height]="height" />
+      }
 
-          <div class="info">
-              <p>People: {{ totalPeople }}</p>
-          </div>
-
-
+      <div class="info">
+        <p>People: {{ totalPeople }}</p>
       </div>
 
-      <div class="col-sm-3 nopadding">
-          <!-- Chat    -->
-            <app-chat *ngIf="!smallScreen && channel" [channel]="channel"></app-chat>
-        </div>
+
     </div>
+
+    <div class="col-sm-3 nopadding">
+      <!-- Chat    -->
+      @if (!smallScreen && channel) {
+        <app-chat [channel]="channel" />
+      }
+    </div>
+  </div>
 </div>

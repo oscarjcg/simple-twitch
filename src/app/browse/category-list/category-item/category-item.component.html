@@ -1,8 +1,8 @@
 
 <div class="main-container">
     <div>
-        <img class="image" src="{{ category.imageBase64 }}" alt="{{ category.name }}" width="150" 
-            routerLink="/directory/game/{{ category.name }}">
+        <img class="image" src="{{ category().imageBase64 }}" alt="{{ category().name }}" width="150" 
+            routerLink="/directory/game/{{ category().name }}">
     </div>
-    <a class="name" routerLink="/directory/game/{{ category.name }}">{{ category.name }}</a>
+    <a class="name" routerLink="/directory/game/{{ category().name }}">{{ category().name }}</a>
 </div>

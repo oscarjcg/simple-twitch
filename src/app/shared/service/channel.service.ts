@@ -1,20 +1,19 @@
+import { environment } from '../../../environments/environment';
 import { Channel } from '../model/channel.model';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 export class ChannelService {
+    private http = inject(HttpClient);
+
 
     channels: Channel[] = [];
     channelChanged = new Subject<Channel[]>();
     currentTimeChanged = new Subject<number>();
 
-    //private BASE_URL = 'http://localhost:8086/api/';
-    private BASE_URL = 'https://st-dotnet.codename-project.com/api/';
-
-
-  constructor(private http: HttpClient) {}
+    private BASE_URL = environment.apiUrl;
 
     fetchChannels() {
         this.http.get<Channel[]>(this.BASE_URL + 'channel')

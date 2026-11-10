@@ -8,8 +8,8 @@ describe('HeaderChannelComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderChannelComponent ]
-    })
+    imports: [HeaderChannelComponent]
+})
     .compileComponents();
   }));
 

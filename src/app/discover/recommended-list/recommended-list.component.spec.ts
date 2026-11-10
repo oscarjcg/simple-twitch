@@ -8,8 +8,8 @@ describe('RecommendedListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecommendedListComponent ]
-    })
+    imports: [RecommendedListComponent]
+})
     .compileComponents();
   }));
 

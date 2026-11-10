@@ -1,17 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Channel } from 'src/app/shared/model/channel.model';
 
 @Component({
-  selector: 'app-simple-channel-item',
-  templateUrl: './simple-channel-item.component.html',
-  styleUrls: ['./simple-channel-item.component.scss']
+    selector: 'app-simple-channel-item',
+    templateUrl: './simple-channel-item.component.html',
+    styleUrls: ['./simple-channel-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [RouterLink]
 })
-export class SimpleChannelItemComponent implements OnInit {
-  @Input() channel: Channel;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class SimpleChannelItemComponent {
+  readonly channel = input.required<Channel>();
 }

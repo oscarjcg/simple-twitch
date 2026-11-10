@@ -8,8 +8,8 @@ describe('GameComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GameComponent ]
-    })
+    imports: [GameComponent]
+})
     .compileComponents();
   }));
 

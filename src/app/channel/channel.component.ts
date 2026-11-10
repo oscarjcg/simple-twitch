@@ -1,39 +1,45 @@
- import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit } from '@angular/core';
- import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
- import { ChannelService } from '../shared/service/channel.service';
- import { Channel } from '../shared/model/channel.model';
- import { ActivatedRoute, Params } from '@angular/router';
- import { DataComponentService } from '../shared/service/data-component.service';
- import { Subscription } from 'rxjs';
- import {ChatSocketIoService} from "../shared/service/chat-socket-io.service";
+import { environment } from '../../environments/environment';
+import { Component, OnInit, ElementRef, OnDestroy, ChangeDetectionStrategy, DestroyRef, effect, inject, input, viewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { YouTubePlayer } from '@angular/youtube-player';
+import { ChannelService } from '../shared/service/channel.service';
+import { Channel } from '../shared/model/channel.model';
+import { DataComponentService } from '../shared/service/data-component.service';
+import { ChatSocketIoService } from '../shared/service/chat-socket-io.service';
+import { HeaderChannelComponent } from './header-channel/header-channel.component';
+import { ChatComponent } from './chat/chat.component';
 
-
- @Component({
-  selector: 'app-channel',
-  templateUrl: './channel.component.html',
-  styleUrls: ['./channel.component.scss']
+@Component({
+    selector: 'app-channel',
+    templateUrl: './channel.component.html',
+    styleUrls: ['./channel.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [HeaderChannelComponent, YouTubePlayer, ChatComponent],
+    host: { '(window:resize)': 'onResize()' }
 })
 export class ChannelComponent implements OnInit, OnDestroy {
-  @ViewChild('videoContainer', {static: true}) iframe: ElementRef;
+  private sanitizer = inject(DomSanitizer);
+  private channelService = inject(ChannelService);
+  private dataComponentService = inject(DataComponentService);
+  private chatSocketIoService = inject(ChatSocketIoService);
+  private destroyRef = inject(DestroyRef);
 
-  // videoUrl = 'https://www.youtube.com/watch?v=LembwKDo1Dk';
-  videoUrl = 'https://www.youtube.com/embed/LembwKDo1Dk';
-  // videoUrlSanitized: SafeResourceUrl;
-   url: string = "https://models3d.codename-project.com/?model=";
-   urlSafe: SafeResourceUrl;
+  readonly channelName = input<string>(undefined, { alias: 'channel' });
+  readonly iframe = viewChild.required<ElementRef<HTMLElement>>('videoContainer');
+
+  url: string = environment.models3dUrl;
+  urlSafe: SafeResourceUrl;
   player: YT.Player;
-  id = 'LembwKDo1Dk';
   interval;
   currentTime: number;
   width = 100;
   height = 100;
   private RATIO_16_9 = [16, 9];
-  private RATIO_4_3 = [4, 3];
   public TYPE_YOUTUBE = 1;
   public TYPE_3D_MODEL = 2;
 
   channel: Channel;
-  subs: Subscription;
 
   heightChannel = '700px';
   smallScreen = false;
@@ -42,73 +48,57 @@ export class ChannelComponent implements OnInit, OnDestroy {
   // Temporal fix. Error in initial video config, generates botton bar, on resize is fixed.
   videoInitCorrected = false;
 
-  totalPeople:number = 0;
+  totalPeople = 0;
 
-  constructor(private sanitizer: DomSanitizer,
-              private channelService: ChannelService,
-              private route: ActivatedRoute,
-              private dataComponentService: DataComponentService,
-              private chatSocketIoService: ChatSocketIoService) {
+  constructor() {
+    effect(() => {
+      this.channelName();
+      this.channel = null;
+      this.channelService.fetchChannels();
+    });
   }
 
   ngOnInit() {
-    this.subs = this.channelService.channelChanged
-      .subscribe(channels => {
-        this.channel = this.channelService.getChannel(this.route.snapshot.params.channel);
-        this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url + this.channel.content);
+    this.channelService.channelChanged
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.channel = this.channelService.getChannel(this.channelName());
+        if (this.channel) {
+          this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url + this.channel.content);
+        }
       });
 
     this.heightChannel = this.dataComponentService.calculateHeightNoHeader() + 'px';
-    this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
-    this.route.params
-      .subscribe((params: Params) => {
-        this.channel = null;
-        this.channelService.fetchChannels();
-      });
+    this.smallScreen = window.innerWidth <= this.bootstrapStack;
 
-    this.chatSocketIoService.chatPeopleChanged.subscribe(total => {
-      this.totalPeople = total;
-    });
+    this.chatSocketIoService.chatPeopleChanged
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(total => {
+        this.totalPeople = total;
+      });
 
     this.chatSocketIoService.connectChat();
 
-    this.channelService.fetchChannels();
     this.startTimer();
     this.set3DModelFrameSize(this.RATIO_16_9);
   }
 
   savePlayer(player) {
     this.player = player;
-    // console.log('player instance', player);
-    // this.n = this.header.nativeElement.clientWidth;
     this.playerConfig(this.player, this.RATIO_16_9);
-    // console.log( this.player.getDuration());
   }
 
   playerConfig(player, ratio: number[]) {
-    // console.log('video div', this.iframe);
-    this.width = this.iframe.nativeElement.clientWidth;
-    this.height = this.calculateHeight(
-      this.width,
-      ratio[0],
-      ratio[1]);
+    this.set3DModelFrameSize(ratio);
     player.setSize(this.width, this.height);
-    // console.log(this.width + ' h: ' + this.  height);
-    // player.setSize(300, 600);
-
-
   }
 
   set3DModelFrameSize(ratio: number[]) {
-    this.width = this.iframe.nativeElement.clientWidth;
-    this.height = this.calculateHeight(
-      this.width,
-      ratio[0],
-      ratio[1]);
+    this.width = this.iframe().nativeElement.clientWidth;
+    this.height = this.calculateHeight(this.width, ratio[0], ratio[1]);
   }
 
   onStateChange(event) {
-    // console.log('player state', event.data);
   }
 
   startTimer() {
@@ -129,17 +119,16 @@ export class ChannelComponent implements OnInit, OnDestroy {
   }
 
   onResize() {
-    // console.log('Resize');
-    if (this.player)
+    if (this.player) {
       this.playerConfig(this.player, this.RATIO_16_9);
+    }
     this.set3DModelFrameSize(this.RATIO_16_9);
 
     this.heightChannel = this.dataComponentService.calculateHeightNoHeader() + 'px';
-    this.smallScreen = (window.innerWidth <= this.bootstrapStack) ? true : false;
+    this.smallScreen = window.innerWidth <= this.bootstrapStack;
   }
 
   ngOnDestroy() {
-    this.subs.unsubscribe();
     clearInterval(this.interval);
     this.chatSocketIoService.disconnectChat();
   }

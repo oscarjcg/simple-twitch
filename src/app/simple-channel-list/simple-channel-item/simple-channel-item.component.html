@@ -1,13 +1,13 @@
 
-<div class="container-fluid main-container" routerLink="/{{channel.name}}">
+<div class="container-fluid main-container" routerLink="/{{channel().name}}">
     <div class="row">
         <div class="col-sm-12" class="channel-item">
             <img
-                src="{{ channel.imageBase64 }}"
-                alt="{{ channel.image }}"
+                src="{{ channel().imageBase64 }}"
+                alt="{{ channel().image }}"
                 height="30"
                 style="border-radius: 50%; color: white">
-          <p class="channel-name">{{ channel.name }}</p>
+          <p class="channel-name">{{ channel().name }}</p>
 
         </div>
 

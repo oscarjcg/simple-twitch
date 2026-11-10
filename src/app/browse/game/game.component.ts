@@ -1,41 +1,39 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, DestroyRef, inject, input } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import { DataComponentService } from 'src/app/shared/service/data-component.service';
-import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/shared/service/category.service';
 import { Category } from 'src/app/shared/model/category.model';
-import { Subscription } from 'rxjs';
+import { SpinnerComponent } from '../../UI/spinner/spinner.component';
+import { SearchBarComponent } from '../../UI/search-bar/search-bar.component';
 
 @Component({
-  selector: 'app-game',
-  templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+    selector: 'app-game',
+    templateUrl: './game.component.html',
+    styleUrls: ['./game.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [SpinnerComponent, RouterLinkActive, RouterLink, SearchBarComponent, RouterOutlet]
 })
-export class GameComponent implements OnInit, OnDestroy {
+export class GameComponent implements OnInit {
+  private dataComponentService = inject(DataComponentService);
+  private categoryService = inject(CategoryService);
+  private destroyRef = inject(DestroyRef);
+
+  readonly game = input<string>('');
+
   height = '0px';
   category: Category;
-  subs: Subscription;
   isFetching = true;
-  game = '';
-
-  constructor(private dataComponentService: DataComponentService,
-              private route: ActivatedRoute,
-              private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.height = this.dataComponentService.calculateHeightNoHeader() + 'px';
-    this.game = this.route.snapshot.params.game;
 
-    this.subs = this.categoryService.categoriesChanged
-      .subscribe((categories: Category[]) => {
-        this.category = this.categoryService.getCategories().find((value: Category) => {
-          return value.name === this.game;
-        });
+    this.categoryService.categoriesChanged
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(categories => {
+        this.category = categories.find(value => value.name === this.game());
         this.isFetching = false;
       });
     this.categoryService.fetchCategories();
-  }
-
-  ngOnDestroy() {
-    this.subs.unsubscribe();
   }
 }

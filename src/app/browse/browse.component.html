@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid main-container" [ngStyle]="{height: height}">
+<div class="container-fluid main-container" [style.height]="height">
     <h1 class="title">Browse</h1>  
     <!-- Sections  -->
     <a class="feature-title" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/directory">Categories</a>
@@ -8,9 +8,9 @@
     <!-- Search -->
     <div class="container-search-bar">
         <p class="title" >Filter by </p>
-        <app-search-bar></app-search-bar>
+        <app-search-bar />
     </div>
 
     <!-- Content -->
-    <router-outlet ></router-outlet>
+    <router-outlet />
 </div>

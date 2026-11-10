@@ -1,18 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Category } from 'src/app/shared/model/category.model';
 
 @Component({
-  selector: 'app-category-item',
-  templateUrl: './category-item.component.html',
-  styleUrls: ['./category-item.component.scss']
+    selector: 'app-category-item',
+    templateUrl: './category-item.component.html',
+    styleUrls: ['./category-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [RouterLink]
 })
-export class CategoryItemComponent implements OnInit {
-  @Input() category: Category;
-
-  constructor() { }
-
-  ngOnInit() {
-
-  }
-
+export class CategoryItemComponent {
+  readonly category = input.required<Category>();
 }

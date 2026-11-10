@@ -1,29 +1,29 @@
-
-<app-spinner *ngIf="!channel"></app-spinner>
-<div class="main-container" *ngIf="channel" (window:resize)="onResize()">
+@if (channel(); as channel) {
+  <div class="main-container">
     <!-- Image and name -->
     <img
-        src="{{ channel.imageBase64 }}"
-        alt="{{ channel.image }}"
-        height="30"
-        style="border-radius: 50%; color: white; margin-left: 10px; margin-right: 10px;">
-    <a class="channel-name">{{ channel.name }}</a>
-    <div class="navbar-header">
+      src="{{ channel.imageBase64 }}"
+      alt="{{ channel.image }}"
+      height="30"
+      style="border-radius: 50%; color: white; margin-left: 10px; margin-right: 10px;">
+      <a class="channel-name">{{ channel.name }}</a>
+      <div class="navbar-header">
         <!-- Features -->
-        <ul class="nav navbar-nav" [ngClass]="{'collapse': smallScreen}">
-            <li>
-                <a routerLink="/{{ channel.name }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-            </li>
-            <!--
-            <li>
-                <a routerLink="/{{ channel.name }}/videos" routerLinkActive="active">Videos</a>
-            </li>
-            <li>
-                <a routerLink="/{{ channel.name }}/clips" routerLinkActive="active">Clips</a>
-            </li>
-            -->
+        <ul class="nav navbar-nav" [class.collapse]="smallScreen">
+          <li>
+            <a routerLink="/{{ channel.name }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+          </li>
+          <!--
+          <li>
+            <a routerLink="/{{ channel.name }}/videos" routerLinkActive="active">Videos</a>
+          </li>
+          <li>
+            <a routerLink="/{{ channel.name }}/clips" routerLinkActive="active">Clips</a>
+          </li>
+          -->
         </ul>
-
-
+      </div>
     </div>
-</div>
+} @else {
+  <app-spinner />
+}

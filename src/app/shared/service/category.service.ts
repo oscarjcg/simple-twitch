@@ -1,22 +1,19 @@
+import { environment } from '../../../environments/environment';
 import { Category } from '../model/category.model';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class CategoryService {
+  private http = inject(HttpClient);
+
 
   private categories: Category[] = [];
   categoriesChanged = new Subject<Category[]>();
  
-  //private BASE_URL = 'http://localhost:8086/api/';
-  private BASE_URL = 'https://st-dotnet.codename-project.com/api/';
-
-
-  constructor(private http: HttpClient) {
-
-  }
+  private BASE_URL = environment.apiUrl;
 
   fetchCategories() {
     // New copy

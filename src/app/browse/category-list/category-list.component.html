@@ -1,7 +1,9 @@
 
-<app-spinner *ngIf="isFetching"></app-spinner>
-<div class="list-container">    
-    <app-category-item 
-        *ngFor="let cat of categories"
-        [category]=cat></app-category-item>    
+@if (isFetching) {
+  <app-spinner />
+}
+<div class="list-container">
+  @for (cat of categories; track cat.name) {
+    <app-category-item [category]=cat />
+  }
 </div>

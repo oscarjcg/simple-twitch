@@ -1,7 +1,9 @@
 
-<app-spinner *ngIf="isFetching"></app-spinner>
+@if (isFetching) {
+  <app-spinner />
+}
 <div class="main-container">
-    <app-channel-item 
-        *ngFor="let c of channels"
-        [channel]=c></app-channel-item>
+  @for (c of channels; track c.id) {
+    <app-channel-item [channel]=c />
+  }
 </div>

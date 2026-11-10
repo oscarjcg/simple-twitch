@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { Injectable, inject } from '@angular/core';
 import { CommentChat } from '../model/comment.model';
 import { Subject } from 'rxjs';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import {Channel} from "../model/channel.model";
 
 @Injectable({providedIn: 'root'})
 export class ChatService {
-  //private BASE_URL = 'http://localhost:8086/api/';
-  private BASE_URL = 'https://st-dotnet.codename-project.com/api/';
+  private http = inject(HttpClient);
+
+  private BASE_URL = environment.apiUrl;
 
 
   comments: CommentChat[] = [
 
   ];
   commentsChanged = new Subject<CommentChat[]>();
-
-  constructor(private http: HttpClient) {}
 
   fetchComments(name: string) {
     this.http.get<CommentChat[]>(this.BASE_URL + 'comment/ByChannelName/' + name)
