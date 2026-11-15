@@ -1,5 +1,7 @@
 # SimpleTwitch (In development)
 
+[![Build](https://github.com/oscarjcg/simple-twitch/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/oscarjcg/simple-twitch/actions/workflows/build.yml)
+[![Tests](https://github.com/oscarjcg/simple-twitch/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/oscarjcg/simple-twitch/actions/workflows/test.yml)
 
 
 **Website (In development)**: https://simple-twitch.codename-project.com/
@@ -22,7 +24,7 @@
     * Content: YouTube video or 3D model
     * Chat: Comments
 * Backend:
-    * Github: https://github.com/oscarjcg/simple-twitch-backend-laravel
+    * Github: https://github.com/oscarjcg/st-dotnet
 
 **Development environment**:
 * **Operating system:** Windows 11 64-bit
@@ -48,4 +50,4 @@
     * `docker compose --profile test run --rm st-angular-e2e`
 * Run a single unit spec file
     * `docker compose --profile test run --rm st-angular-test npx ng test --watch=false --include=src/app/channel`
-* Both suites run on every push and pull request (`.github/workflows/test.yml`)
+* On every push and pull request, GitHub Actions runs the production build (`.github/workflows/build.yml`) and both test suites (`.github/workflows/test.yml`). The badges at the top show the latest result on `master`
