@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "gamer",
+    "image": "/assets/img/c1.jpg",
+    "preview": "/assets/img/live.jpg",
+    "content": "dQw4w9WgXcQ",
+    "channelTypeId": 1
+  },
+  {
+    "id": 2,
+    "name": "modeler",
+    "image": "/assets/img/c2.png",
+    "preview": "/assets/img/live.jpg",
+    "content": "robot",
+    "channelTypeId": 2
+  },
+  {
+    "id": 3,
+    "name": "streamer",
+    "image": "/assets/img/c3.png",
+    "preview": "/assets/img/live.jpg",
+    "content": "M7lc1UVf-VE",
+    "channelTypeId": 1
+  },
+  {
+    "id": 4,
+    "name": "sculptor",
+    "image": "/assets/img/c4.png",
+    "preview": "/assets/img/live.jpg",
+    "content": "car",
+    "channelTypeId": 2
+  },
+  {
+    "id": 5,
+    "name": "speedrunner",
+    "image": "/assets/img/c1.jpg",
+    "preview": "/assets/img/live.jpg",
+    "content": "aqz-KE-bpKQ",
+    "channelTypeId": 1
+  },
+  {
+    "id": 6,
+    "name": "builder",
+    "image": "/assets/img/c2.png",
+    "preview": "/assets/img/live.jpg",
+    "content": "house",
+    "channelTypeId": 2
+  },
+  {
+    "id": 7,
+    "name": "caster",
+    "image": "/assets/img/c3.png",
+    "preview": "/assets/img/live.jpg",
+    "content": "ScMzIvxBSi4",
+    "channelTypeId": 1
+  },
+  {
+    "id": 8,
+    "name": "animator",
+    "image": "/assets/img/c4.png",
+    "preview": "/assets/img/live.jpg",
+    "content": "dragon",
+    "channelTypeId": 2
+  }
+]

@@ -1,29 +1,28 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { createChannelServiceStub, provideChannelStub } from '../testing/service-stubs';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [AppComponent],
-}).compileComponents();
-  }));
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+      imports: [AppComponent],
+      providers: [provideRouter([]), provideChannelStub(createChannelServiceStub())],
+    });
   });
 
-  it(`should have as title 'simple-twitch'`, () => {
+  it(`has 'simple-twitch' as title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('simple-twitch');
+    expect(fixture.componentInstance.title).toEqual('simple-twitch');
   });
 
-  it('should render title', () => {
+  it('renders the header, the channel sidebar and the router outlet', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('simple-twitch app is running!');
+    const el: HTMLElement = fixture.nativeElement;
+
+    expect(el.querySelector('app-header')).not.toBeNull();
+    expect(el.querySelector('app-simple-channel-list')).not.toBeNull();
+    expect(el.querySelector('router-outlet')).not.toBeNull();
   });
 });

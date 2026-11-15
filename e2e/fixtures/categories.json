@@ -1,0 +1,58 @@
+[
+  {
+    "name": "League of Legends",
+    "image": "/assets/img/lol.jpg"
+  },
+  {
+    "name": "Overwatch",
+    "image": "/assets/img/overwatch.jpg"
+  },
+  {
+    "name": "Apex",
+    "image": "/assets/img/apex.jpg"
+  },
+  {
+    "name": "Counter Strike",
+    "image": "/assets/img/counter-strike.jpg"
+  },
+  {
+    "name": "God of War",
+    "image": "/assets/img/god-of-war.jpg"
+  },
+  {
+    "name": "GTA",
+    "image": "/assets/img/gta.jpg"
+  },
+  {
+    "name": "Rainbow Six Siege",
+    "image": "/assets/img/rainbowsix-siege.jpg"
+  },
+  {
+    "name": "Minecraft",
+    "image": "/assets/img/lol.jpg"
+  },
+  {
+    "name": "Fortnite",
+    "image": "/assets/img/overwatch.jpg"
+  },
+  {
+    "name": "Valorant",
+    "image": "/assets/img/apex.jpg"
+  },
+  {
+    "name": "Dota 2",
+    "image": "/assets/img/counter-strike.jpg"
+  },
+  {
+    "name": "Rocket League",
+    "image": "/assets/img/god-of-war.jpg"
+  },
+  {
+    "name": "Hearthstone",
+    "image": "/assets/img/gta.jpg"
+  },
+  {
+    "name": "Simulation",
+    "image": "/assets/img/rainbowsix-siege.jpg"
+  }
+]

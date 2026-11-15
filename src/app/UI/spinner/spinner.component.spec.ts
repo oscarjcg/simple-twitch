@@ -1,25 +1,11 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { SpinnerComponent } from './spinner.component';
 
 describe('SpinnerComponent', () => {
-  let component: SpinnerComponent;
-  let fixture: ComponentFixture<SpinnerComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-    imports: [SpinnerComponent]
-})
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SpinnerComponent);
-    component = fixture.componentInstance;
+  it('renders the loading animation', () => {
+    const fixture = TestBed.createComponent(SpinnerComponent);
     fixture.detectChanges();
-  });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.nativeElement.querySelectorAll('.lds-roller > div').length).toBe(8);
   });
 });

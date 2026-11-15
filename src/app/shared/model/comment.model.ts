@@ -28,7 +28,7 @@ export class CommentChat {
     }
 
     private setRandomColor() {
-        this.color = this.colors[Math.round(Math.random() * this.colors.length)];
+        this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
         return this.color;
     }
 }

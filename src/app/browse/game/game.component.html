@@ -3,7 +3,7 @@
   @if (isFetching) {
     <app-spinner />
   }
-  @if (!isFetching) {
+  @if (!isFetching && category) {
     <div class="header">
       <img
         src="{{ category.imageBase64 }}"

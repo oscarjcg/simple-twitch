@@ -1,0 +1,24 @@
+{
+  "gamer": [
+    {
+      "id": 1,
+      "channel_id": 1,
+      "author": "alice",
+      "text": "Hello!"
+    },
+    {
+      "id": 2,
+      "channel_id": 1,
+      "author": "bob",
+      "text": "Nice stream"
+    }
+  ],
+  "modeler": [
+    {
+      "id": 3,
+      "channel_id": 2,
+      "author": "carol",
+      "text": "Cool model"
+    }
+  ]
+}

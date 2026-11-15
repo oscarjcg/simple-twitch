@@ -40,3 +40,12 @@
     * `docker compose run --rm st-angular-build`
 * Deploy to Firebase Hosting
     * `firebase deploy`
+
+**Testing** (Docker only, no backend needed):
+* Unit tests (Vitest + jsdom), coverage report in `coverage/simple-twitch`
+    * `docker compose --profile test run --rm st-angular-test`
+* UI tests (Playwright, Chromium). The API and socket.io server are mocked with the fixtures in `e2e/fixtures`. HTML report in `playwright-report/`
+    * `docker compose --profile test run --rm st-angular-e2e`
+* Run a single unit spec file
+    * `docker compose --profile test run --rm st-angular-test npx ng test --watch=false --include=src/app/channel`
+* Both suites run on every push and pull request (`.github/workflows/test.yml`)
